@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-      ctx: new AudioContext()
+      ctx: null
     }
   },
   methods: {
