@@ -1,7 +1,7 @@
 const MIN_SAMPLES = 0
 const GOOD_ENOUGH_CORRELATION = 0.9
 
-export default function (audioBuffer, sampleRate) {
+function autoCorrelate (audioBuffer, sampleRate) {
     const SIZE = audioBuffer.length
     const MAX_SAMPLES = Math.floor(SIZE / 2)
     let bestOffset = -1
@@ -55,17 +55,11 @@ export default function (audioBuffer, sampleRate) {
       lastCorrelation = correlation
     }
     if (bestCorrelation > 0.01) {
-      // console.log(
-      //   'f = ' +
-      //     sampleRate / bestOffset +
-      //     'Hz (rms: ' +
-      //     rms +
-      //     ' confidence: ' +
-      //     bestCorrelation +
-      //     ')'
-      // )
+      // console.log( 'f = ' + sampleRate / bestOffset + 'Hz (rms: ' + rms + ' confidence: ' + bestCorrelation + ')' )
       return sampleRate / bestOffset
     }
     return -1
-    //	var best_frequency = sampleRate/bestOffset;
+    //	const best_frequency = sampleRate/bestOffset;
   }
+
+export default autoCorrelate
