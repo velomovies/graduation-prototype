@@ -8,12 +8,11 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    '@nuxtjs',
-    'plugin:prettier/recommended'
+    'plugin:vue/essential'
   ],
   plugins: [
-    'prettier'
+    'vue'
   ],
   // add your custom rules here
-  rules: {"no-console": "off"}
+  rules: {"no-console": "off", "comma-dangle": ["error", "always-multiline"]}
 }
