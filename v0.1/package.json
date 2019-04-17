@@ -23,10 +23,10 @@
     "serve": "serve ./dist"
   },
   "dependencies": {
-    "nuxt": "^2.4.0",
     "axios": "^0.18.0",
     "dotenv": "^6.1.0",
     "dotenv-safe": "^6.0.0",
+    "nuxt": "^2.4.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
@@ -46,9 +46,9 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "2.6.2",
     "fs": "0.0.1-security",
+    "nuxt-svg-loader": "^1.0.1",
     "serve": "^10.1.1",
-    "prettier": "1.14.3",
-    "vue-svg-loader": "0.5.0"
+    "prettier": "1.14.3"
   },
   "babel": {
     "plugins": [

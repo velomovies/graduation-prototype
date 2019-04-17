@@ -4,6 +4,7 @@
     <p>frequency: {{ getFrequency() }} hz</p>
     <p>{{ getCents() }} cents</p>
     <p>Played note: {{ getPlayedNotes() }}</p>
+    <pre>{{ notes }}</pre>
   </section>
 </template>
 
@@ -29,7 +30,51 @@ export default {
       noteObj: {},
       count: 0,
       nextArray: true,
+
+      firstLoopPlaying: true,
+      startTime: null,
+      stopTime: null,
+      playedHz: [],
+      notes: [],
     }
+  },
+  watch: {
+    pitch: function () {
+      if (this.pitch) {
+        this.playedHz.push(this.pitch)
+
+        if (this.firstLoopPlaying) {
+          const date = new Date()
+          this.startTime = date.getTime()
+
+          if (this.stopTime) {
+            this.notes.push({
+              hz: 0,
+              timeStart: this.stopTime,
+              timeStop: this.startTime,
+              noteDuration: this.startTime - this.stopTime,
+            })
+          }
+
+          this.firstLoopPlaying = false
+        }
+      } else {
+        if (this.startTime && !this.firstLoopPlaying) {
+          const date = new Date()
+          this.stopTime = date.getTime()
+          this.notes.push({
+            hz: getMedian(this.playedHz),
+            noteObj: musicalHelpers.getNoteObject(getMedian(this.playedHz), 4),
+            timeStart: this.startTime,
+            timeStop: this.stopTime,
+            noteDuration: this.stopTime - this.startTime,
+          })
+          this.firstLoopPlaying = true
+        }
+
+        this.playedHz= []
+      }
+    },
   },
   methods: {
     getNote () {

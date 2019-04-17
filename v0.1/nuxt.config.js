@@ -40,7 +40,9 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [],
+  modules: [
+    'nuxt-svg-loader',
+  ],
 
   /*
   ** Build configuration
@@ -50,23 +52,19 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+      config.module.rules.forEach((rule) => {
+        if (rule.test.toString() === '/\\.(png|jpe?g|gif|svg|webp)$/') {
+          rule.test = /\.(png|jpe?g|gif|webp)$/
+        }
+      })
+
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/,
-        })
-        config.module.rules.forEach(rule => {
-          if (rule.test.toString() === '/\\.(png|jpe?g|gif|svg|webp)$/') {
-            rule.test = /\.(png|jpe?g|gif|webp)$/
-          }
-        })
-
-        config.module.rules.push({
-          test: /\.svg$/,
-          loader: 'vue-svg-loader',
+          exclude: /(node_modules)||(.svg$)/,
         })
       }
     },

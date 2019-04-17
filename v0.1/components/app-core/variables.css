@@ -1,0 +1,32 @@
+:root {
+  /* Colors */
+  --black: #000000;
+  --white: #f2f2f2;
+  --gray: #ededed;
+  --dark-grey: #999;
+  --html-blue: blue;
+  --theme-color: #9E2500;
+  --background-color: #fdfdfd;
+
+  /* Fonts */
+  --font-sans: 'nunito', Arial, sans-serif;
+  --font-bold: Arial, sans-serif;
+
+  --font-size-small: 1rem;
+  --font-size: 1.25rem;
+  --font-size-big: 2rem;
+
+  /* Spacing */
+  --spacing-tiny: 0.3125rem;
+  --spacing-smaller: 0.5rem;
+  --spacing-small: 1rem;
+  --spacing-medium: 1.5rem;
+  --spacing-large: 2rem;
+  --spacing-larger: 3rem;
+  --spacing-big: 4rem;
+
+  /* Z-indexes */
+  --z-index-low: 1;
+  --z-index-high: 2;
+  --z-index-overlay: 3;
+}

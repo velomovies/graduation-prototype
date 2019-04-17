@@ -7,6 +7,21 @@
       {{ liveInputButton }}
     </button>
 
+    <button @click="getDate()">{{ date }}</button>
+
+    <audio @durationchange="showAudio" ref="player" controls >
+        <!-- <source ref="player" :src="audioFile"> -->
+        Your browser does not support the audio element.
+    </audio>
+
+    <metronome
+      :tempo="bpm"
+    />
+
+    <tempo-select
+      v-model="bpm"
+    />
+
     <pitch-visualizer
       :pitch="pitch"
     />
@@ -15,12 +30,16 @@
 
 <script>
 import pitchVisualizer from '../components/pitch-visualizer'
+import metronome from '../components/metronome'
+import tempoSelect from '../components/tempo-select'
 
-import { autoCorrelate } from '../lib'
+import { autoCorrelate, getClosest } from '../lib'
 
 export default {
   components: {
     pitchVisualizer,
+    metronome,
+    tempoSelect,
   },
   data() {
     return {
@@ -32,8 +51,33 @@ export default {
       errorMessage: '',
       bufferLength: 1024,
       audioBuffer: null,
-      pitch: 0,
       animationFrameID: null,
+      pitch: 0,
+      bpm: 60,
+
+      mediaRecorder: null,
+      chunks: [],
+      blob: null,
+      audio: null,
+      audioFile: null,
+      isAudio: false,
+      startRecord: null,
+      stopRecord: null,
+      recordLength: 0,
+
+      date: 'Get the date',
+      clicked: false,
+      differenceInDate: 0,
+      noteArray: [
+        {times: 4, note: 'full'},
+        {times: 3, note: 'half point'},
+        {times: 2, note: 'half'},
+        {times: 1.5, note: 'quater point'},
+        {times: 1, note: 'quarter'},
+        {times: .75, note: 'half point'},
+        {times: .5, note: 'half'},
+        {times: .25, note: 'eight'},
+      ],
     }
   },
   mounted() {
@@ -64,6 +108,8 @@ export default {
       this.isListening = false
       this.listeningStream = null
 
+      this.mediaRecorder.stop()
+
       this.liveInputButton = 'Use live input'
       this.pitch = 0
 
@@ -79,6 +125,32 @@ export default {
       this.analyser = this.audioContext.createAnalyser()
       this.mediaStreamSource.connect(this.analyser)
       this.updatePitch()
+
+      this.mediaRecorder = new MediaRecorder(stream)
+      this.mediaRecorder.start()
+
+      const date = new Date()
+      this.startRecord = date.getTime()
+
+      this.mediaRecorder.ondataavailable = evt => {
+        // push each chunk (blobs) in an array
+        this.chunks.push(evt.data)
+      }
+
+      this.mediaRecorder.onstop = evt => {
+        // Make blob out of our blobs, and open it.
+        console.log(this.chunks)
+        this.blob = new Blob(this.chunks, { 'type' : 'audio/wav; codecs=opus' })
+        this.audioFile = URL.createObjectURL(this.blob)
+        this.$refs.player.src = this.audioFile
+        const date = new Date()
+        this.stopRecord = date.getTime()
+
+        this.recordLength = this.recordLength + (this.stopRecord - this.startRecord)
+
+        console.log(this.recordLength)
+        console.log(this.$refs.player.buffered)
+      }
     },
     updatePitch () {
       this.analyser.getFloatTimeDomainData(this.audioBuffer)
@@ -95,6 +167,22 @@ export default {
             this.errorMessage = 'Give us permission to use your microphone'
           }
         })
+    },
+    getDate () {
+      const d = new Date()
+      if (!this.clicked) {
+        this.date = d.getTime()
+        this.clicked = true
+      } else {
+        this.differenceInDate = d.getTime() - this.date
+        this.clicked = false
+
+        const noteValue = (this.differenceInDate / (60 / this.bpm)) / 1000
+        console.log(getClosest(noteValue, this.noteArray))
+      }
+    },
+    showAudio () {
+      console.log(this.$refs.player.duration)
     },
   },
 }
