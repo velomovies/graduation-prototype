@@ -17,7 +17,7 @@ function getNoteObject(frequency, transpose) {
   transpose = transpose || 0
   const noteNumber = noteFromPitch(frequency)
   const detune = centsOffFromPitch(frequency, noteNumber)
-  const noteStringNumber = (noteNumber % 12) + transpose
+  let noteStringNumber = (noteNumber % 12) + transpose
   let absDetune
 
   if (detune == 0) {
@@ -28,7 +28,7 @@ function getNoteObject(frequency, transpose) {
     absDetune = '♯'
   }
 
-  noteStringNumber > 11 ? noteStringNumber - 12 : noteStringNumber
+  noteStringNumber > 11 ? noteStringNumber = noteStringNumber - 12 : noteStringNumber
 
   return {
     noteName: noteStrings[noteStringNumber],
@@ -37,4 +37,9 @@ function getNoteObject(frequency, transpose) {
   }
 }
 
-export default { noteFromPitch, frequencyFromNoteNumber, centsOffFromPitch, getNoteObject }
+export default {
+  noteFromPitch,
+  frequencyFromNoteNumber,
+  centsOffFromPitch,
+  getNoteObject,
+}

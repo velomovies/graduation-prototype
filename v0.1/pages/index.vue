@@ -3,16 +3,18 @@
     <h1>Prototype</h1>
     <p v-if="errorMessage">{{ errorMessage }}</p>
 
-    <button @click="toggleLiveInput()">
+    <button @click="toggleLiveInput">
       {{ liveInputButton }}
     </button>
 
     <button @click="getDate()">{{ date }}</button>
 
-    <audio @durationchange="showAudio" ref="player" controls >
-        <!-- <source ref="player" :src="audioFile"> -->
-        Your browser does not support the audio element.
-    </audio>
+    <button
+      v-if="!isListening && audioFile"
+      @click="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
+    >
+      {{ playButton }}
+    </button>
 
     <metronome
       :tempo="bpm"
@@ -25,12 +27,21 @@
     <pitch-visualizer
       :pitch="pitch"
     />
+
+    <note-visualizer
+      :pitch="pitch"
+      :activeNote="activeNote"
+      :isPlaying="isPlaying"
+      :isRecording="isRecording"
+      @current-note="toggleAudio"
+    />
   </main>
 </template>
 
 <script>
 import pitchVisualizer from '../components/pitch-visualizer'
 import metronome from '../components/metronome'
+import noteVisualizer from '../components/note-visualizer'
 import tempoSelect from '../components/tempo-select'
 
 import { autoCorrelate, getClosest } from '../lib'
@@ -39,6 +50,7 @@ export default {
   components: {
     pitchVisualizer,
     metronome,
+    noteVisualizer,
     tempoSelect,
   },
   data() {
@@ -58,12 +70,13 @@ export default {
       mediaRecorder: null,
       chunks: [],
       blob: null,
-      audio: null,
       audioFile: null,
-      isAudio: false,
-      startRecord: null,
-      stopRecord: null,
-      recordLength: 0,
+      player: null,
+      isRecording: false,
+
+      isPlaying: false,
+      playButton: 'Play audio',
+      activeNote: 0,
 
       date: 'Get the date',
       clicked: false,
@@ -87,6 +100,7 @@ export default {
     toggleLiveInput () {
       if (this.isListening) {
         this.stopStream(this.listeningStream)
+        this.stopRecording()
       } else {
         navigator.mediaDevices.getUserMedia({ audio: true, video: false })
           .then(this.startStream)
@@ -108,14 +122,12 @@ export default {
       this.isListening = false
       this.listeningStream = null
 
-      this.mediaRecorder.stop()
-
       this.liveInputButton = 'Use live input'
       this.pitch = 0
 
       const tracks = stream.getTracks()
-      window.cancelAnimationFrame(this.animationFrameID)
       tracks.forEach(track => track.stop())
+      window.cancelAnimationFrame(this.animationFrameID)
     },
     processAudio (stream) {
       window.AudioContext = window.AudioContext || window.webkitAudioContext
@@ -125,32 +137,23 @@ export default {
       this.analyser = this.audioContext.createAnalyser()
       this.mediaStreamSource.connect(this.analyser)
       this.updatePitch()
-
-      this.mediaRecorder = new MediaRecorder(stream)
+    },
+    startRecording () {
+      this.mediaRecorder = new MediaRecorder(this.listeningStream)
       this.mediaRecorder.start()
+      this.isRecording = true
 
-      const date = new Date()
-      this.startRecord = date.getTime()
-
-      this.mediaRecorder.ondataavailable = evt => {
-        // push each chunk (blobs) in an array
-        this.chunks.push(evt.data)
+      this.mediaRecorder.ondataavailable = e => {
+        this.chunks.push(e.data)
       }
 
-      this.mediaRecorder.onstop = evt => {
-        // Make blob out of our blobs, and open it.
-        console.log(this.chunks)
-        this.blob = new Blob(this.chunks, { 'type' : 'audio/wav; codecs=opus' })
-        this.audioFile = URL.createObjectURL(this.blob)
-        this.$refs.player.src = this.audioFile
-        const date = new Date()
-        this.stopRecord = date.getTime()
-
-        this.recordLength = this.recordLength + (this.stopRecord - this.startRecord)
-
-        console.log(this.recordLength)
-        console.log(this.$refs.player.buffered)
+      this.mediaRecorder.onstop = () => {
+        this.saveAudio()
       }
+    },
+    stopRecording () {
+      this.mediaRecorder.stop()
+      this.isRecording = false
     },
     updatePitch () {
       this.analyser.getFloatTimeDomainData(this.audioBuffer)
@@ -158,7 +161,31 @@ export default {
 
       correlation > -1 ? this.pitch = correlation : this.pitch = 0
 
+      if (this.pitch && !this.isRecording) {
+        this.startRecording()
+      }
+
       this.animationFrameID = window.requestAnimationFrame(this.updatePitch)
+    },
+    saveAudio () {
+      this.player = new Audio()
+      this.blob = new Blob(this.chunks, { 'type' : 'audio/wav; codecs=opus' })
+      this.audioFile = URL.createObjectURL(this.blob)
+      this.player.src = this.audioFile
+    },
+    toggleAudio (data) {
+      if (this.isPlaying) {
+        this.isPlaying = false
+        this.activeNote = 0
+        this.playButton = 'Play audio'
+        this.player.pause()
+      } else {
+        this.isPlaying = true
+        this.activeNote = data.nthNote
+        this.playButton = 'Pause audio'
+        this.player.currentTime = data.noteTime
+        this.player.play()
+      }
     },
     checkPermissions () {
       navigator.permissions.query({name: 'microphone'})
@@ -180,9 +207,6 @@ export default {
         const noteValue = (this.differenceInDate / (60 / this.bpm)) / 1000
         console.log(getClosest(noteValue, this.noteArray))
       }
-    },
-    showAudio () {
-      console.log(this.$refs.player.duration)
     },
   },
 }
