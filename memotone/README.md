@@ -1,6 +1,6 @@
-# prototype-v0.1
+# Memotone prototype v1
 
-> A first prototype for my graduation project
+> A prototype for my graduation project
 
 ## Build Setup
 
