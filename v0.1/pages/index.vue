@@ -55,12 +55,13 @@ export default {
   },
   data() {
     return {
+      errorMessage: '',
+
       audioContext: null,
       isListening: false,
       listeningStream: null,
       liveInputButton: 'Use live input',
       mediaStreamSource: null,
-      errorMessage: '',
       bufferLength: 1024,
       audioBuffer: null,
       animationFrameID: null,
@@ -91,10 +92,11 @@ export default {
         {times: .5, note: 'half'},
         {times: .25, note: 'eight'},
       ],
-    }
+}
   },
   mounted() {
     this.checkPermissions()
+    console.log(localStorage['icon'])
   },
   methods: {
     toggleLiveInput () {
@@ -171,7 +173,26 @@ export default {
       this.player = new Audio()
       this.blob = new Blob(this.chunks, { 'type' : 'audio/wav; codecs=opus' })
       this.audioFile = URL.createObjectURL(this.blob)
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET',
+      this.audioFile,
+      true)
+      xhr.responseType = "blob";
+      console.log(xhr)
+      xhr.onload = function(e){ //Stringify blob...
+        //reload the icon from storage
+        var fr = new FileReader();
+        fr.onload =
+            function(e) {
+                localStorage['icon'] = e.target.result
+                console.log(localStorage['icon'])
+            }
+        fr.readAsDataURL(xhr.response);
+      }
+      xhr.send(null)
       this.player.src = this.audioFile
+
     },
     toggleAudio (data) {
       if (this.isPlaying) {
