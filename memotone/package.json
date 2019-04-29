@@ -1,0 +1,58 @@
+{
+  "name": "prototype-v0.1",
+  "version": "1.0.0",
+  "description": "A first prototype for my graduation project",
+  "author": "velomovies",
+  "private": true,
+  "homepage": "https://github.com/velomovies/graduation-prototype#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/velomovies/graduation-prototype"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie 11"
+  ],
+  "scripts": {
+    "dev": "PORT=2019 nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "serve": "serve ./dist"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.1.0",
+    "dotenv-safe": "^6.0.0",
+    "nuxt": "^2.4.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9",
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "babel-eslint": "^8.2.1",
+    "autoprefixer": "9.0.1",
+    "eslint": "^5.0.1",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-plugin-import": ">=2.14.0",
+    "eslint-plugin-jest": ">=21.24.1",
+    "eslint-plugin-node": ">=7.0.1",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "fs": "0.0.1-security",
+    "nuxt-svg-loader": "^1.0.1",
+    "serve": "^10.1.1",
+    "prettier": "1.14.3"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import"
+    ]
+  }
+}
