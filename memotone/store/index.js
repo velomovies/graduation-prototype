@@ -4,3 +4,9 @@ export const state = () => {
     musicName: 'Muziekje',
   }
 }
+
+export const mutations = {
+  setBpm (state, value) {
+    state.bpm = value
+  },
+}
