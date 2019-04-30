@@ -1,25 +1,23 @@
 <template>
-  <section>
-    <h2
-      v-for="(note, index) in notes"
-      :key="index"
-      @click="() => showNote(index)"
-      :class="{
-        'note-visualizer__active-note' :
-        isPlaying && playingNote === index
-      }"
-    >
-      {{ note.noteObj ? note.noteObj.noteName : 'rest' }}
-    </h2>
-    <span>{{ activeNote }}</span>
-    <pre>{{ notes }}</pre>
+  <section class="note-visualizer">
+    <stave
+      :notes="notes"
+      :isPlaying="isPlaying"
+      :activeNote="activeNote"
+      @current-note="data => $emit('current-note', data)"
+    />
   </section>
 </template>
 
 <script>
+import stave from '../stave'
+
 import { musicalHelpers, getMedian } from '../../lib'
 
 export default {
+  components: {
+    stave,
+  },
   props: {
     pitch: {
       type: Number,
@@ -46,19 +44,12 @@ export default {
       playedHz: [],
       notes: [],
       duration: 0,
-      playingNote: 0,
     }
   },
   watch: {
     isRecording: function () {
       if (!this.isRecording) {
         this.stopTime = null
-      }
-    },
-    isPlaying: function () {
-      this.playingNote = this.activeNote
-      if (this.isPlaying) {
-        this.setPlayingNote()
       }
     },
     pitch: function () {
@@ -100,29 +91,13 @@ export default {
       }
     },
   },
-  methods: {
-    showNote (index) {
-      let noteTime = 0
-      for (let i = 0; i < index; i++) {
-        noteTime = noteTime + this.notes[i].noteDuration
-      }
-      this.$emit('current-note', { noteTime: noteTime / 1000, nthNote: index })
-    },
-    setPlayingNote () {
-      setTimeout(() => {
-        if (this.playingNote != this.notes.length - 1) {
-          this.playingNote = this.playingNote + 1
-          this.setPlayingNote ()
-        }
-      }, this.notes[this.playingNote].noteDuration)
-    },
-  },
 }
 </script>
 
 <style>
-  .note-visualizer__active-note {
-    text-decoration: underline;
+  .note-visualizer {
+    position: relative;
+    overflow-x: scroll;
+    height: 30rem;
   }
 </style>
-
