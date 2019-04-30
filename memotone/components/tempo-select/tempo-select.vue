@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     updateTempo (event) {
-      this.$emit('input', Number(event.target.value))
+      this.$store.commit('setBpm', Number(event.target.value))
     },
   },
 }

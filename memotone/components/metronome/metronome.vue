@@ -1,7 +1,10 @@
 <template>
   <div>
-    <button @click="toggleMetronome">{{ metronomeInputButton }}</button>
-    <metronome-icon class="metronome-icon" />
+    <button @click="toggleMetronome">
+      {{ metronomeInputButton }}
+      <metronome-icon class="metronome-icon" />
+    </button>
+
   </div>
 </template>
 
@@ -12,27 +15,20 @@ export default {
   components: {
     metronomeIcon,
   },
-  props: {
-    tempo: {
-      type: Number,
-      required: true,
-    },
-  },
   data () {
     return {
       audioContext: null,
       isPulsing: false,
-      metronomeBpm: 60,
       metronomeInputButton: 'Start metronome',
       metronomeInterval: null,
       oscillator: null,
       tempoDidChange: false,
     }
   },
-  watch: {
-    tempo: function () {
-      this.tempoDidChange = true
-    },
+  mounted () {
+    this.$store.watch(
+      state => state.bpm, () => this.tempoDidChange = true
+    )
   },
   methods: {
     toggleMetronome () {
@@ -62,7 +58,7 @@ export default {
     startMetronome () {
       this.processAudio()
       this.metronomeInterval = setInterval(
-        this.processAudio, 60000 / this.tempo
+        this.processAudio, 60000 / this.$store.state.bpm
       )
     },
     stopMetronome () {
