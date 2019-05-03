@@ -68,7 +68,6 @@ export default {
   },
   mounted() {
     this.checkPermissions()
-    console.log()
   },
   methods: {
     toggleLiveInput () {
@@ -171,7 +170,6 @@ export default {
       xhr.send(null)
     },
     toggleAudio (data) {
-      console.log(data)
       if (this.isPlaying) {
         this.isPlaying = false
         this.activeNote = 0
