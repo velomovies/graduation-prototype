@@ -4,6 +4,7 @@
       v-for="(note, index) in notes"
     >
       <note
+        v-if="note.noteDuration > 200"
         class="note-visualizer__note"
         :key="index"
         :note="note"
@@ -52,7 +53,7 @@ export default {
   methods: {
     setPlayingNote () {
       setTimeout(() => {
-        if (this.playingNote != this.notes.length - 1) {
+        if (this.playingNote !== this.notes.length - 1) {
           this.playingNote = this.playingNote + 1
           this.setPlayingNote ()
         }
