@@ -108,14 +108,6 @@ export default {
       }
       this.$emit('current-note', { noteTime: noteTime / 1000, nthNote: index })
     },
-    setPlayingNote () {
-      setTimeout(() => {
-        if (this.playingNote != this.notes.length - 1) {
-          this.playingNote = this.playingNote + 1
-          this.setPlayingNote ()
-        }
-      }, this.notes[this.playingNote].noteDuration)
-    },
   },
 }
 </script>
