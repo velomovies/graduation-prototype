@@ -1,0 +1,41 @@
+/* Font faces */
+
+@font-face {
+  font-family: "nunito";
+  font-weight: 200;
+  src: url("/fonts/nunito-extra-light.woff2") format("woff2"),
+       url("/fonts/nunito-extra-light.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nunito";
+  font-weight: 400;
+  src: url("/fonts/nunito-regular.woff2") format("woff2"),
+       url("/fonts/nunito-regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nunito";
+  font-weight: 700;
+  src: url("/fonts/nunito-bold.woff2") format("woff2"),
+       url("/fonts/nunito-bold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nunito";
+  font-weight: 900;
+  src: url("/fonts/nunito-black.woff2") format("woff2"),
+       url("/fonts/nunito-black.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nunito";
+  font-style: italic;
+  src: url("/fonts/nunito-italic.woff2") format("woff2"),
+       url("/fonts/nunito-italic.woff") format("woff");
+  font-display: swap;
+}
