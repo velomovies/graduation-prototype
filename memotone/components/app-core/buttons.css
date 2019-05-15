@@ -1,0 +1,11 @@
+/* Buttons */
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background: #ededed;
+}

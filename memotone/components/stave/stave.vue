@@ -1,11 +1,11 @@
 <template>
-  <div class="note-visualizer__notes">
+  <div class="stave__notes">
+    <div class="stave__time-signature"></div>
     <template
       v-for="(note, index) in notes"
     >
       <note
         v-if="note.noteDuration > 200"
-        class="note-visualizer__note"
         :key="index"
         :note="note"
         :noteIndex="index"
@@ -65,7 +65,7 @@ export default {
 
 
 <style>
-  .note-visualizer__notes {
+  .stave__notes {
     min-width: 100%;
     position: absolute;
     transform: translateY(-50%);
@@ -75,5 +75,13 @@ export default {
     background-repeat: repeat-x;
     background-size: auto 100%;
     min-height: var(--stave-height);
+  }
+
+  .stave__time-signature {
+    margin-left: calc(var(--stave-height) / 1.5);
+    margin-right: calc(var(--stave-height) / 4);
+    width: calc(var(--stave-height) / 2);
+    background-image: url('/images/time-signature.svg');
+    background-repeat: no-repeat;
   }
 </style>

@@ -1,53 +1,55 @@
 <template>
-  <main>
-    <h1>Record Page</h1>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
+  <div class="record">
+    <header>
+      <app-logo
+        isBack
+        isLite
+      />
+      <app-error v-if="errorMessage"/>
+      <label>Title: <input type="text"></label>
+    </header>
+    <main>
+      <note-visualizer
+        :pitch="pitch"
+        :activeNote="activeNote"
+        :isPlaying="isPlaying"
+        :isRecording="isRecording"
+        @current-note="toggleAudio"
+      />
 
-    <button
-      v-if="!isListening && audioFile"
-      @click="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
-    >
-      {{ playButton }}
-    </button>
-
-    <button @click="toggleLiveInput">
-      {{ liveInputButton }}
-    </button>
-
-    <nuxt-link to="/">Verwijder</nuxt-link>
-    <span @click="saveMusic">
-      <nuxt-link to="/music/iets">Opslaan</nuxt-link>
-    </span>
-
-    <note-visualizer
-      :pitch="pitch"
-      :activeNote="activeNote"
-      :isPlaying="isPlaying"
-      :isRecording="isRecording"
-      @current-note="toggleAudio"
-    />
-  </main>
+      <record-controls
+        @toggleAudio="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
+        @toggleInput="toggleLiveInput"
+        :isListening="isListening"
+        :audioFile="audioFile"
+        :isPlaying="isPlaying"
+      />
+    </main>
+  </div>
 </template>
 
 <script>
-import metronome from '../components/metronome'
+import appLogo from '../components/app-logo'
+import appError from '../components/app-error'
 import noteVisualizer from '../components/note-visualizer'
-import tempoSelect from '../components/tempo-select'
+import recordControls from '../components/record-controls'
 
 import { autoCorrelate } from '../lib'
 
 export default {
   components: {
+    appError,
+    appLogo,
     noteVisualizer,
+    recordControls,
   },
   data() {
     return {
-      errorMessage: '',
+      errorMessage: false,
 
       audioContext: null,
       isListening: false,
       listeningStream: null,
-      liveInputButton: 'Use live input',
       mediaStreamSource: null,
       bufferLength: 1024,
       audioBuffer: null,
@@ -69,6 +71,9 @@ export default {
   mounted() {
     this.checkPermissions()
   },
+  beforeDestroy() {
+    this.stopRecording()
+  },
   methods: {
     toggleLiveInput () {
       if (this.isListening) {
@@ -87,15 +92,12 @@ export default {
       this.isListening = true
       this.listeningStream = stream
 
-      this.liveInputButton = 'Stop live input'
-
       this.processAudio(stream)
     },
     stopStream (stream) {
       this.isListening = false
       this.listeningStream = null
 
-      this.liveInputButton = 'Use live input'
       this.pitch = 0
 
       const tracks = stream.getTracks()
@@ -125,7 +127,11 @@ export default {
       }
     },
     stopRecording () {
-      this.mediaRecorder.stop()
+      if(this.mediaRecorder) {
+        if(this.mediaRecorder.state === 'recording') {
+          this.mediaRecorder.stop()
+        }
+      }
       this.isRecording = false
     },
     updatePitch () {
@@ -187,7 +193,7 @@ export default {
       navigator.permissions.query({name: 'microphone'})
         .then(permissionStatus => {
           if (permissionStatus.state === 'denied') {
-            this.errorMessage = 'Give us permission to use your microphone'
+            this.errorMessage = true
           } else {
             this.toggleLiveInput()
           }
@@ -198,15 +204,9 @@ export default {
 </script>
 
 <style>
-button {
-  font-size: 1rem;
-  border: .1rem solid #000;
-  padding: .75rem;
-  cursor: pointer;
-  transition: all .3s;
-}
-
-button:hover {
-  background: #ededed;
+.record {
+  background: var(--theme-color);
+  height: 100%;
+  min-height: 100vh;
 }
 </style>

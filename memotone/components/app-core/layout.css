@@ -12,3 +12,7 @@ html {
   box-sizing: border-box;
   background: var(--background-color);
 }
+
+header {
+  height: 8rem;
+}

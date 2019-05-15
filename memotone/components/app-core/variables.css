@@ -1,12 +1,12 @@
 :root {
   /* Colors */
-  --black: #000000;
-  --white: #f2f2f2;
-  --gray: #ededed;
+  --black: #333333;
+  --white: #ffffff;
+  --gray: #e5e5e5;
   --dark-grey: #999;
   --html-blue: blue;
   --theme-color: #9E2500;
-  --background-color: #fdfdfd;
+  --background-color: #f5f5f5;
 
   /* Fonts */
   --font-sans: 'nunito', Arial, sans-serif;
@@ -31,5 +31,11 @@
   --z-index-overlay: 3;
 
   /* Stave */
-  --stave-height: 8rem;
+  --stave-height: 22vw;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --stave-height: 6rem;
+  }
 }

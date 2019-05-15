@@ -1,41 +1,41 @@
 <template>
+<div class="index">
+  <header>
+    <app-logo />
+  </header>
   <main>
-    <h1>Prototype V1</h1>
+    <note-visualizer
+      :pitch="0"
+      :activeNote="0"
+      :isPlaying="false"
+      :isRecording="false"
+    />
 
-    <label>Title: <input type="text"></label>
+    <onboarding />
 
-    <nuxt-link to="/record">Opnemen</nuxt-link>
-
-    <metronome />
-
-    <tempo-select />
+    <record-button />
 
     <nuxt-link to="/music">Overview</nuxt-link>
   </main>
+</div>
 </template>
 
 <script>
-import metronome from '../components/metronome'
-import tempoSelect from '../components/tempo-select'
+import recordButton from '../components/record-button'
+import appLogo from '../components/app-logo'
+import noteVisualizer from '../components/note-visualizer'
+import onboarding from '../components/onboarding'
 
 export default {
   components: {
-    metronome,
-    tempoSelect,
+    recordButton,
+    appLogo,
+    onboarding,
+    noteVisualizer,
   },
 }
 </script>
 
 <style>
-button {
-  font-size: 1rem;
-  border: .1rem solid #000;
-  padding: .75rem;
-  cursor: pointer;
-  transition: all .3s;
-}
 
-button:hover {
-  background: #ededed;
-}
 </style>

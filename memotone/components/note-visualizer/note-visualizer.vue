@@ -1,5 +1,6 @@
 <template>
   <section class="note-visualizer">
+    <div class="note-visualizer__treble-staff"></div>
     <stave
       :notes="notes"
       :isPlaying="isPlaying"
@@ -98,6 +99,31 @@ export default {
   .note-visualizer {
     position: relative;
     overflow-x: scroll;
-    height: 30rem;
+    height: calc(var(--stave-height) * 4);
+  }
+
+  .note-visualizer::-webkit-scrollbar {
+    width: 1rem;
+    height: .3rem;
+  }
+
+  .note-visualizer::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  .note-visualizer::-webkit-scrollbar-thumb {
+    height: .1rem;
+    background-color: transparent;
+  }
+
+  .note-visualizer__treble-staff {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--stave-height) / 1.6);
+    height: calc(var(--stave-height) * 3.5);
+    background-image: url('/images/treble-staff.svg');
+    background-repeat: no-repeat;
+    background-position: center;
   }
 </style>
