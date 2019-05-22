@@ -5,8 +5,10 @@
       class="logo__text"
       :class="{ 'logo__text--lite' : isLite }"
       v-if="isBack"
+      @click="(e) => this.$emit('clicked', e)"
     >
       <back
+
         class="logo__back-icon"
         :class="{ 'logo__back-icon--lite' : isLite }"
       />

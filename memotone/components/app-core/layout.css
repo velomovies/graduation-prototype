@@ -16,3 +16,16 @@ html {
 header {
   height: 8rem;
 }
+
+.header--small {
+  height: 3rem;
+}
+
+main > svg {
+  width: 100vw;
+  height: 100vh;
+}
+
+a.underline {
+  text-decoration: underline;
+}

@@ -3,7 +3,6 @@
     <header>
       <app-logo
         isBack
-        isLite
       />
       <app-error v-if="errorMessage"/>
       <label>Title: <input type="text"></label>
@@ -205,7 +204,6 @@ export default {
 
 <style>
 .record {
-  background: var(--theme-color);
   height: 100%;
   min-height: 100vh;
 }

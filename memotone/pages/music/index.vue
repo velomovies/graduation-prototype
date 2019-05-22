@@ -1,10 +1,12 @@
 <template>
   <div class="overview">
-  <header>
-    <app-logo />
+  <header class="header--small">
+    <app-logo
+      isBack
+    />
   </header>
   <main>
-    <p>Overview with all music</p>
+    <p>Alle muziek</p>
   </main>
   </div>
 </template>

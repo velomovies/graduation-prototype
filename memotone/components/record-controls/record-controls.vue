@@ -15,7 +15,7 @@
       @toggleInput="e => $emit('toggleInput', e)"
     />
 
-    <nuxt-link class="record-controls__save" to="/music/iets">Opslaan</nuxt-link>
+    <nuxt-link class="record-controls__save" to="/archief/opgenomen/opname-1">Opslaan</nuxt-link>
   </section>
 </template>
 
@@ -66,16 +66,16 @@ export default {
   }
 
   .record-controls__play-icon path {
-    fill: var(--gray);
+    fill: var(--black);
   }
 
   .record-controls__pause-icon path {
-    fill: var(--gray);
+    fill: var(--black);
   }
 
   .record-controls__save {
     position: absolute;
-    color: var(--gray);
+    color: var(--black);
   }
 </style>
 

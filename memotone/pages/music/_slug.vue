@@ -1,13 +1,13 @@
 <template>
   <div class="detail">
-  <header>
+  <header class="header--small">
     <app-logo
       isBack
       :page="'/music'"
     />
   </header>
   <main>
-    <p>Detail page</p>
+    <p>Detail pagina</p>
   </main>
   </div>
 </template>

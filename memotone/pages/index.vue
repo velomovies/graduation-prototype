@@ -5,6 +5,7 @@
   </header>
   <main>
     <note-visualizer
+      v-if="false"
       :pitch="0"
       :activeNote="0"
       :isPlaying="false"
@@ -15,7 +16,7 @@
 
     <record-button />
 
-    <nuxt-link to="/music">Overview</nuxt-link>
+    <nuxt-link to="/archief">Archief</nuxt-link>
   </main>
 </div>
 </template>

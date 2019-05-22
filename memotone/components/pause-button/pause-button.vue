@@ -67,7 +67,7 @@ export default {
   .pause-button__button--pause::before {
     content: '';
     position: absolute;
-    background: var(--gray);
+    background: var(--theme-color);
     opacity: .6;
     top: 50%;
     left: 50%;
@@ -92,11 +92,11 @@ export default {
   .pause-button__button--pause,
   .pause-button__button--pause::after,
   .pause-button__button---pause::before {
-    background: var(--gray);
+    background: var(--theme-color);
   }
 
   .pause-button__button--resume {
-    border: .1rem solid var(--gray);
+    border: .1rem solid var(--theme-color);
     width: 7rem;
     transition: all .3s;
     border-radius: 5rem;
@@ -110,7 +110,7 @@ export default {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     font-size: 1.25rem;
-    color: var(--gray);
+    color: var(--theme-color);
   }
 
   .pause-button__icon {
@@ -119,6 +119,10 @@ export default {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     z-index: var(--z-index-low);
+  }
+
+  .pause-button__icon path {
+    fill: var(--gray);
   }
 
   @keyframes pulsating {
