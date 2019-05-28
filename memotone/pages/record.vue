@@ -1,12 +1,10 @@
 <template>
   <div class="record">
-    <header>
-      <app-logo
-        isBack
-      />
-      <app-error v-if="errorMessage"/>
-      <label>Title: <input type="text"></label>
-    </header>
+    <app-header
+      isBack
+    />
+    <app-error v-if="errorMessage"/>
+    <label>Title: <input type="text"></label>
     <main>
       <note-visualizer
         :pitch="pitch"
@@ -28,7 +26,7 @@
 </template>
 
 <script>
-import appLogo from '../components/app-logo'
+import appHeader from '../components/app-header'
 import appError from '../components/app-error'
 import noteVisualizer from '../components/note-visualizer'
 import recordControls from '../components/record-controls'
@@ -38,7 +36,7 @@ import { autoCorrelate } from '../lib'
 export default {
   components: {
     appError,
-    appLogo,
+    appHeader,
     noteVisualizer,
     recordControls,
   },
