@@ -11,6 +11,11 @@
       noteHeightClass
     ]"
   >
+    <div
+      class="note-active-container"
+      :class="{ 'note-active-container--active' : active }"
+      :style="`animation-duration: ${note.noteDuration / 1000}s;`"
+    ></div>
   </div>
 </template>
 
@@ -122,9 +127,20 @@ export default {
     transform: translateY(calc(var(--stave-height) * .18));
   }
 
-  .note--active {
-    color: red;
-    opacity: .8;
+  .note-active-container {
+    position: absolute;
+    left: 0;
+    right: 100%;
+    width: 0;
+    height: 100%;
+    border-radius: .3rem;
+    background: var(--record-color);
+    opacity: .5;
+    z-index: var(--z-index-low);
+  }
+
+  .note-active-container--active {
+    animation-name: in-out;
   }
 
   /* Notes */

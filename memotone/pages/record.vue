@@ -16,10 +16,11 @@
 
       <record-controls
         @toggleAudio="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
-        @toggleInput="toggleLiveInput"
+        @toggleRecord="toggleLiveInput"
         :isListening="isListening"
         :audioFile="audioFile"
         :isPlaying="isPlaying"
+        :isRecord="true"
       />
     </main>
   </div>
