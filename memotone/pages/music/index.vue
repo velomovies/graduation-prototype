@@ -1,23 +1,28 @@
 <template>
-  <div class="overview">
-  <header class="header--small">
-    <app-logo
+  <div class="music">
+    <app-header
       isBack
     />
-  </header>
-  <main>
-    <p>Alle muziek</p>
-  </main>
+    <main class="music__main">
+    </main>
+    <app-navigation />
   </div>
 </template>
 
 <script>
-import appLogo from '../../components/app-logo'
+import appHeader from '../../components/app-header'
+import appNavigation from '../../components/app-navigation'
 
 export default {
   components: {
-    appLogo,
+    appHeader,
+    appNavigation,
+  },
+  mounted() {
+    console.log(JSON.parse(localStorage['icon']))
   },
 }
 </script>
 
+<style>
+</style>

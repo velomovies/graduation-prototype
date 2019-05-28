@@ -1,8 +1,6 @@
 <template>
 <div class="index">
-  <header>
-    <app-logo />
-  </header>
+  <app-header />
   <main>
     <note-visualizer
       v-if="false"
@@ -14,23 +12,21 @@
 
     <onboarding />
 
-    <record-button />
-
-    <nuxt-link to="/archief">Archief</nuxt-link>
+    <app-navigation />
   </main>
 </div>
 </template>
 
 <script>
-import recordButton from '../components/record-button'
-import appLogo from '../components/app-logo'
+import appHeader from '../components/app-header'
+import appNavigation from '../components/app-navigation'
 import noteVisualizer from '../components/note-visualizer'
 import onboarding from '../components/onboarding'
 
 export default {
   components: {
-    recordButton,
-    appLogo,
+    appHeader,
+    appNavigation,
     onboarding,
     noteVisualizer,
   },
