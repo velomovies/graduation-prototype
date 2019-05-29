@@ -37,7 +37,7 @@ export default {
   .app-error__article {
     background: var(--white);
     padding: 2rem;
-    margin: 2rem 2rem;
+    margin: 2rem 1rem;
     border-radius: 1rem;
     text-align: center;
   }

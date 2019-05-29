@@ -7,16 +7,16 @@
   --html-blue: blue;
   --theme-color: #9E2500;
   --record-color: #C21001;
-  --record-color-half: #E5B4AA;
+  --record-color-half: #E6C8C0;
   --background-color: #f7f7f7;
 
   /* Fonts */
   --font-sans: 'nunito', Arial, sans-serif;
   --font-bold: Arial, sans-serif;
 
-  --font-size-smaller: .8rem;
-  --font-size-small: 1rem;
-  --font-size: 1.25rem;
+  --font-size-smaller: 1rem;
+  --font-size-small: 1.25rem;
+  --font-size: 1.5rem;
   --font-size-large: 1.75rem;
   --font-size-big: 2.5rem;
 

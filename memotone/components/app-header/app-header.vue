@@ -43,7 +43,6 @@ export default {
     align-items: center;
     justify-content: center;
     padding: .25rem 1.5rem .25rem 1.5rem;
-    margin-bottom: 2.5rem;
     background: var(--white);
   }
 

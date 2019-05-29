@@ -1,8 +1,9 @@
 /* Typography */
 
 h1 {
-  font-size: var(--font-size-big);
+  font-size: var(--font-size-large);
   font-weight: 700;
+  line-height: 1.25;
 }
 
 h2 {
