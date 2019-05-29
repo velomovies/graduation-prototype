@@ -1,29 +1,39 @@
 <template>
-  <nuxt-link class="app-button" to="/record">
+  <div>
+    <nuxt-link v-if="!isListening && !isRecord" class="app-button" to="/record">
+      <div
+        class="app-button__button-container"
+      >
+        <div
+          class="app-button__button"
+          :class="{ 'app-button__button--error' : errorMessage }"
+        >
+          <microphoneIcon v-if="!errorMessage" class="app-button__button-icon" />
+          <microphoneOffIcon v-if="errorMessage" class="app-button__button-icon" />
+          <p
+            class="a11y-sr-only"
+          >
+            {{ buttonText }}
+          </p>
+        </div>
+      </div>
+    </nuxt-link>
     <div
+      v-if="isRecord"
       class="app-button__button-container"
       :class="{ 'app-button__button-container--oval' : !isListening && isRecord }"
     >
-      <div v-if="!isListening && !isRecord" class="app-button__button">
-        <microphoneIcon class="app-button__button-icon" />
-        <p
-          class="a11y-sr-only"
-        >
-          Opnemen
-        </p>
-      </div>
-
       <record-pause-button
         @toggleRecord="e => $emit('toggleRecord', e)"
-        v-if="isRecord"
         :isListening="isListening"
       />
     </div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
 import microphoneIcon from '../../static/images/icons/mic.svg'
+import microphoneOffIcon from '../../static/images/icons/mic-off.svg'
 import pauseIcon from '../../static/images/icons/pause.svg'
 
 import recordPauseButton from '../record-pause-button'
@@ -46,6 +56,32 @@ export default {
   components: {
     microphoneIcon,
     recordPauseButton,
+    microphoneOffIcon,
+  },
+  data() {
+    return {
+      errorMessage: false,
+    }
+  },
+  mounted() {
+    this.checkPermissions()
+  },
+  methods: {
+    checkPermissions () {
+      navigator.permissions.query({name: 'microphone'})
+        .then(permissionStatus => {
+          if (permissionStatus.state === 'denied') {
+            this.errorMessage = true
+          } else {
+            this.errorMessage = false
+          }
+        })
+    },
+  },
+  computed: {
+    buttonText: function () {
+      return this.errorMessage ? 'Kan niet opnemen' : 'Opnemen'
+    },
   },
 }
 </script>
@@ -79,6 +115,11 @@ export default {
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+  }
+
+  .app-button__button--error {
+    border: .625rem solid var(--background-color);
+    background: var(--dark-grey);
   }
 
   .app-button__button-icon {
