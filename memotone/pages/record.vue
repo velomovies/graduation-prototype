@@ -6,7 +6,7 @@
     <app-error v-if="errorMessage"/>
     <main>
       <page-title>
-        Opname 1
+        Opname 4
       </page-title>
 
       <note-visualizer
@@ -192,14 +192,16 @@ export default {
       }
     },
     checkPermissions () {
-      navigator.permissions.query({name: 'microphone'})
-        .then(permissionStatus => {
-          if (permissionStatus.state === 'denied') {
-            this.errorMessage = true
-          } else {
-            this.toggleLiveInput()
-          }
-        })
+      if (navigator.permissions) {
+        navigator.permissions.query({name: 'microphone'})
+          .then(permissionStatus => {
+            if (permissionStatus.state === 'denied') {
+              this.errorMessage = true
+            } else {
+              this.toggleLiveInput()
+            }
+          })
+      }
     },
   },
 }

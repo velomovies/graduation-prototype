@@ -41,6 +41,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-clipboard2',
     'nuxt-svg-loader',
   ],
 

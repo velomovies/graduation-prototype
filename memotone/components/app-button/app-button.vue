@@ -39,10 +39,10 @@
           class="app-button__button app-button__button--play"
           :class="{ 'app-button__button--isPlaying' : isPlaying }"
         >
-          <playIcon v-if="!isPlaying" class="app-button__button-icon" />
+          <playIcon v-if="!isPlaying" class="app-button__button-icon app-button__button-icon--play" />
           <pauseIcon v-if="isPlaying" class="app-button__button-icon app-button__button-icon--isPlaying" />
         </div>
-        <p class="app-button__button-text small-text">Afspelen</p>
+        <p class="app-button__button-text small-text">{{ playText }}</p>
       </button>
     </div>
   </div>
@@ -93,24 +93,28 @@ export default {
   },
   methods: {
     checkPermissions () {
-      navigator.permissions.query({name: 'microphone'})
-        .then(permissionStatus => {
-          if (permissionStatus.state === 'denied') {
-            this.errorMessage = true
-          } else {
-            this.errorMessage = false
-          }
-        })
+      if(navigator.permissions) {
+        navigator.permissions.query({name: 'microphone'})
+          .then(permissionStatus => {
+            if (permissionStatus.state === 'denied') {
+              this.errorMessage = true
+            } else {
+              this.errorMessage = false
+            }
+          })
+      }
     },
   },
   computed: {
     buttonText: function () {
       return this.errorMessage ? 'Kan niet opnemen' : 'Opnemen'
     },
+    playText: function () {
+      return this.isPlaying ? 'Pauzeren' : 'Afspelen'
+    },
   },
 }
 </script>
-
 
 <style>
   .app-button__button-container {
@@ -173,15 +177,25 @@ export default {
     color: var(--white);
   }
 
+  .app-button__button-icon--play {
+    transform: translateY(-50%) translateX(-40%);
+  }
+
   .app-button__button-icon--isPlaying {
     color: var(--black);
   }
 
   .app-button__button-text {
     position: absolute;
-    bottom: -.4rem;
+    bottom: -.2rem;
     left: 50%;
     transform: translateX(-50%);
   }
+
+  @media (min-width: 25rem) {
+  .app-button__button-text {
+    bottom: -.4rem;
+  }
+}
 </style>
 

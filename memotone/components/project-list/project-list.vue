@@ -1,6 +1,23 @@
 <template>
   <ul class="project-list">
     <li class="project-list__link">
+      <nuxt-link class="project-list__link-item" to="/music/eigen-opnames">
+        <div class="project-list__image">
+          <music-icon class="project-list__image-icon" />
+        </div>
+        <div class="project-list__text">
+          <h2
+            class="project-list__text-h2"
+          >
+            Eigen opnames
+          </h2>
+          <p class="project-list__text-p meta small-text">
+            6 Opnames
+          </p>
+        </div>
+      </nuxt-link>
+    <li/>
+    <li class="project-list__link">
       <nuxt-link class="project-list__link-item" to="/music/experimenteel">
         <div class="project-list__image">
           <music-icon class="project-list__image-icon" />

@@ -14,7 +14,7 @@
   --font-sans: 'nunito', Arial, sans-serif;
   --font-bold: Arial, sans-serif;
 
-  --font-size-smaller: 1rem;
+  --font-size-smaller: .8rem;
   --font-size-small: 1.125rem;
   --font-size: 1.25rem;
   --font-size-large: 1.5rem;
@@ -35,7 +35,13 @@
   --z-index-overlay: 3;
 
   /* Stave */
-  --stave-height: 22vw;
+  --stave-height: 20vw;
+}
+
+@media (min-width: 25rem) {
+  :root {
+    --font-size-smaller: 1rem;
+  }
 }
 
 @media (min-width: 40rem) {

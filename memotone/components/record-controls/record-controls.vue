@@ -15,7 +15,7 @@
       isRecord
     />
     <nuxt-link
-      to="/music"
+      to="/music/eigen-opnames/opname-4"
       class="record-controls__link small-text"
       :class="{ 'record-controls__link--inactive' : !audioFile }"
     >

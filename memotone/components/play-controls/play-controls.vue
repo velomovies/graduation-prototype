@@ -1,7 +1,7 @@
 <template>
   <nav class="play-controls">
     <button
-      @click="e => this.openSettings = true"
+      @click="e => this.$emit('settingsClicked', e)"
       class="play-controls__link small-text"
     >
       <settings-icon class="play-controls__link-icon" />
@@ -11,7 +11,7 @@
       isPlay
     />
     <button
-      to="/music"
+      @click="e => this.$emit('shareClicked', e)"
       class="play-controls__link small-text"
     >
       <share-icon class="play-controls__link-icon" />
@@ -30,11 +30,6 @@ export default {
     appButton,
     settingsIcon,
     shareIcon,
-  },
-  data () {
-    return {
-      openSettings: false,
-    }
   },
 }
 </script>

@@ -25,7 +25,7 @@ export default {
     projectList,
   },
   mounted() {
-    console.log(JSON.parse(localStorage['icon']))
+    // console.log(JSON.parse(localStorage['icon']))
   },
 }
 </script>

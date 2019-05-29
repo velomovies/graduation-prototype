@@ -90,6 +90,11 @@
     border-radius: 50%;
   }
 
+  .track-list__link-options:hover .track-list__link-options-dot,
+  .track-list__link-options:focus .track-list__link-options-dot {
+    background: var(--record-color);
+  }
+
   .track-list__link {
     margin-bottom: 1.5rem;
     border-left: .05rem solid var(--black);

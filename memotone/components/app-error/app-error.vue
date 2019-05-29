@@ -9,7 +9,7 @@
       <p
         class="app-error__article-text"
       >
-        Vind <a class="app-error__article-text-link" href="http://" target="_blank" rel="noopener noreferrer">hier</a> meer informatie over het gebruiken van je microfoon.
+        Vind <a class="app-error__article-text-link" href="https://afstuderen.victorzumpolle.nl/" target="_blank" rel="noopener noreferrer">hier</a> meer informatie over het gebruiken van je microfoon.
       </p>
       <nuxt-link class="app-error__article-link" to="/">
         Sluiten
