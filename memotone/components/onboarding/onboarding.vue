@@ -20,15 +20,22 @@
     display: flex;
     overflow-x: auto;
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
+
   .onboarding__article {
     background: var(--white);
-    height: 50vh;
+    height: 15rem;
     width: 100%;
-    min-width: 16rem;
+    border: .1rem solid var(--record-color-half);
+    border-radius: 1rem;
+    min-width: 18rem;
     margin-right: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
+  }
+
+  .onboarding__article p {
+    margin-bottom: .5rem;
   }
 </style>
