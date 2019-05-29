@@ -8,8 +8,7 @@
       <page-title withImage>
         {{ getSlug($route.params.slug) }}
       </page-title>
-
-      <app-share />
+      <track-list />
     </main>
     <app-navigation />
   </div>
@@ -18,15 +17,15 @@
 <script>
 import appHeader from '../../../components/app-header'
 import appNavigation from '../../../components/app-navigation'
-import appShare from '../../../components/app-share'
 import pageTitle from '../../../components/page-title'
+import trackList from '../../../components/track-list'
 
 export default {
   components: {
     appHeader,
     appNavigation,
-    appShare,
     pageTitle,
+    trackList,
   },
   methods: {
     getSlug(string) {

@@ -25,14 +25,26 @@
 
   .onboarding__article {
     background: var(--white);
-    height: 15rem;
+    height: 50vh;
+    min-height: 15rem;
     width: 100%;
-    border: .1rem solid var(--record-color-half);
     border-radius: 1rem;
-    min-width: 18rem;
+    min-width: 80vw;
     margin-right: 1rem;
     padding: 1.5rem;
     text-align: center;
+  }
+
+  @media (min-width: 30rem) {
+    .onboarding__article {
+      min-width: 60vw;
+    }
+  }
+
+  @media (min-width: 30rem) {
+    .onboarding__article {
+      min-width: 16rem;
+    }
   }
 
   .onboarding__article p {

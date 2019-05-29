@@ -7,9 +7,8 @@
     >
       Welkom bij memotone
     </page-title>
-
-  </main>
     <onboarding />
+  </main>
   <app-navigation />
 </div>
 </template>

@@ -16,3 +16,9 @@ html {
 a.underline {
   text-decoration: underline;
 }
+
+main {
+  padding-bottom: 8rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}

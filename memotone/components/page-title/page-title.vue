@@ -42,7 +42,7 @@ export default {
 
 <style>
   .page-title {
-    margin: 2rem;
+    margin: 2rem 2rem 1.5rem 2rem;
     display: flex;
     align-items: center;
   }

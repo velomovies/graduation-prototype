@@ -15,10 +15,10 @@
   --font-bold: Arial, sans-serif;
 
   --font-size-smaller: 1rem;
-  --font-size-small: 1.25rem;
-  --font-size: 1.5rem;
-  --font-size-large: 1.75rem;
-  --font-size-big: 2.5rem;
+  --font-size-small: 1.125rem;
+  --font-size: 1.25rem;
+  --font-size-large: 1.5rem;
+  --font-size-big: 2rem;
 
   /* Spacing */
   --spacing-tiny: 0.3125rem;
