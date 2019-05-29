@@ -59,7 +59,6 @@ export default {
     height: 5.5rem;
     width: 5.5rem;
     border-radius: 50%;
-    /* border: .625rem solid var(--record-color-half); */
     background: var(--record-color);
     transition: all .3s;
   }
@@ -111,8 +110,8 @@ export default {
   .record-pause-button__button--resume {
     position: relative;
     border: .1rem solid var(--record-color);
-    height: 5.5rem;
-    width: 9rem;
+    height: 4.5rem;
+    width: 7rem;
     margin-top: .5rem;
     border-radius: 5rem;
     transition: all .3s;
@@ -126,7 +125,7 @@ export default {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     color: var(--record-color);
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-smaller);
     opacity: 0;
     transition: all .3s;
   }

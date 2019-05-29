@@ -4,8 +4,11 @@
       isBack
     />
     <app-error v-if="errorMessage"/>
-    <label>Title: <input type="text"></label>
     <main>
+      <page-title>
+        Opname 1
+      </page-title>
+
       <note-visualizer
         :pitch="pitch"
         :activeNote="activeNote"
@@ -13,16 +16,15 @@
         :isRecording="isRecording"
         @current-note="toggleAudio"
       />
-
-      <record-controls
-        @toggleAudio="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
-        @toggleRecord="toggleLiveInput"
-        :isListening="isListening"
-        :audioFile="audioFile"
-        :isPlaying="isPlaying"
-        :isRecord="true"
-      />
     </main>
+    <record-controls
+      @toggleAudio="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
+      @toggleRecord="toggleLiveInput"
+      :isListening="isListening"
+      :audioFile="audioFile"
+      :isPlaying="isPlaying"
+      :isRecord="true"
+    />
   </div>
 </template>
 
@@ -30,6 +32,7 @@
 import appHeader from '../components/app-header'
 import appError from '../components/app-error'
 import noteVisualizer from '../components/note-visualizer'
+import pageTitle from '../components/page-title'
 import recordControls from '../components/record-controls'
 
 import { autoCorrelate } from '../lib'
@@ -40,6 +43,7 @@ export default {
     appHeader,
     noteVisualizer,
     recordControls,
+    pageTitle,
   },
   data() {
     return {

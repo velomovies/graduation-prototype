@@ -2,33 +2,30 @@
 <div class="index">
   <app-header />
   <main>
-    <note-visualizer
-      v-if="false"
-      :pitch="0"
-      :activeNote="0"
-      :isPlaying="false"
-      :isRecording="false"
-    />
+    <page-title
+      uppercase
+    >
+      Welkom bij memotone
+    </page-title>
 
-    <onboarding />
-
-    <app-navigation />
   </main>
+    <onboarding />
+  <app-navigation />
 </div>
 </template>
 
 <script>
 import appHeader from '../components/app-header'
 import appNavigation from '../components/app-navigation'
-import noteVisualizer from '../components/note-visualizer'
 import onboarding from '../components/onboarding'
+import pageTitle from '../components/page-title'
 
 export default {
   components: {
     appHeader,
     appNavigation,
     onboarding,
-    noteVisualizer,
+    pageTitle,
   },
 }
 </script>

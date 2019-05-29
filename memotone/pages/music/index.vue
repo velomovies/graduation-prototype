@@ -4,6 +4,7 @@
       isBack
     />
     <main class="music__main">
+      <page-title uppercase>Mijn muziek</page-title>
     </main>
     <app-navigation />
   </div>
@@ -12,11 +13,13 @@
 <script>
 import appHeader from '../../components/app-header'
 import appNavigation from '../../components/app-navigation'
+import pageTitle from '../../components/page-title'
 
 export default {
   components: {
     appHeader,
     appNavigation,
+    pageTitle,
   },
   mounted() {
     console.log(JSON.parse(localStorage['icon']))
