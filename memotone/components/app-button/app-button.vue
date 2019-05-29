@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nuxt-link v-if="!isListening && !isRecord" class="app-button" to="/record">
+  <div class="app-button__container">
+    <nuxt-link v-if="!isListening && !isRecord && !isPlay" class="app-button" to="/record">
       <div
         class="app-button__button-container"
       >
@@ -18,6 +18,7 @@
         </div>
       </div>
     </nuxt-link>
+
     <div
       v-if="isRecord"
       class="app-button__button-container"
@@ -28,6 +29,22 @@
         :isListening="isListening"
       />
     </div>
+
+    <div v-if="isPlay" class="app-button">
+      <button
+        @click="e => { this.isPlaying = !this.isPlaying }"
+        class="app-button__button-container app-button__button-container--play"
+      >
+        <div
+          class="app-button__button app-button__button--play"
+          :class="{ 'app-button__button--isPlaying' : isPlaying }"
+        >
+          <playIcon v-if="!isPlaying" class="app-button__button-icon" />
+          <pauseIcon v-if="isPlaying" class="app-button__button-icon app-button__button-icon--isPlaying" />
+        </div>
+        <p class="app-button__button-text small-text">Afspelen</p>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -35,6 +52,7 @@
 import microphoneIcon from '../../static/images/icons/mic.svg'
 import microphoneOffIcon from '../../static/images/icons/mic-off.svg'
 import pauseIcon from '../../static/images/icons/pause.svg'
+import playIcon from '../../static/images/icons/play.svg'
 
 import recordPauseButton from '../record-pause-button'
 
@@ -52,15 +70,22 @@ export default {
       type: Boolean,
       default: false,
     },
+    isPlay: {
+      type: Boolean,
+      default: false,
+    },
   },
   components: {
     microphoneIcon,
     recordPauseButton,
     microphoneOffIcon,
+    pauseIcon,
+    playIcon,
   },
   data() {
     return {
       errorMessage: false,
+      isPlaying: false,
     }
   },
   mounted() {
@@ -99,22 +124,38 @@ export default {
     transition: all .3s;
   }
 
+  .app-button__button-container--play {
+    height: 6.5rem;
+    width: 6.5rem;
+  }
+
   .app-button__button-container--oval {
-      height: 6rem;
-      width: 10rem;
+      height: 5rem;
+      width: 8rem;
       border-radius: 5rem;
   }
 
   .app-button__button {
     position: absolute;
-    height: 6.5rem;
-    width: 6.5rem;
+    height: 6.75rem;
+    width: 6.75rem;
     border-radius: 50%;
     border: .625rem solid var(--record-color-half);
     background: var(--record-color);
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+    transition: all .3s;
+  }
+
+  .app-button__button--play {
+    height: 4.5rem;
+    width: 4.5rem;
+    border: none;
+  }
+
+  .app-button__button--isPlaying {
+    background: var(--record-color-half);
   }
 
   .app-button__button--error {
@@ -130,6 +171,17 @@ export default {
     top: 50%;
     transform: translateY(-50%) translateX(-50%);
     color: var(--white);
+  }
+
+  .app-button__button-icon--isPlaying {
+    color: var(--black);
+  }
+
+  .app-button__button-text {
+    position: absolute;
+    bottom: -.4rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 </style>
 

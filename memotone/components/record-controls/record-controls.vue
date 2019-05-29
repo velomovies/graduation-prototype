@@ -9,7 +9,7 @@
       <pause-icon v-if="isPlaying" class="record-controls__link-icon" />
       Afspelen
     </button>
-    <record-button
+    <app-button
       @toggleRecord="e => $emit('toggleRecord', e)"
       :isListening="isListening"
       isRecord
@@ -29,11 +29,11 @@
 import playIcon from '../../static/images/icons/play.svg'
 import pauseIcon from '../../static/images/icons/pause.svg'
 import saveIcon from '../../static/images/icons/save.svg'
-import recordButton from '../record-button'
+import appButton from '../app-button'
 
 export default {
   components: {
-    recordButton,
+    appButton,
     playIcon,
     pauseIcon,
     saveIcon,

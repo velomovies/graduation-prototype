@@ -4,7 +4,7 @@
       <home-icon class="navigation__link-icon" />
       Home
     </nuxt-link>
-    <record-button />
+    <app-button />
     <nuxt-link class="navigation__link small-text" to="/music">
       <music-icon class="navigation__link-icon" />
       Muziek
@@ -15,11 +15,11 @@
 <script>
 import homeIcon from '../../static/images/icons/home.svg'
 import musicIcon from '../../static/images/icons/music.svg'
-import recordButton from '../record-button'
+import appButton from '../app-button'
 
 export default {
   components: {
-    recordButton,
+    appButton,
     homeIcon,
     musicIcon,
   },
