@@ -1,0 +1,15 @@
+/* Buttons */
+
+button {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-small);
+  line-height: 1;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--record-color);
+}

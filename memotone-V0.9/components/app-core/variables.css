@@ -1,0 +1,51 @@
+:root {
+  /* Colors */
+  --black: #333333;
+  --white: #ffffff;
+  --gray: #9a9a9a;
+  --dark-grey: #777;
+  --html-blue: blue;
+  --theme-color: #9E2500;
+  --record-color: #C21001;
+  --record-color-half: #E6C8C0;
+  --background-color: #f7f7f7;
+
+  /* Fonts */
+  --font-sans: 'nunito', Arial, sans-serif;
+  --font-bold: Arial, sans-serif;
+
+  --font-size-smaller: .8rem;
+  --font-size-small: 1.125rem;
+  --font-size: 1.25rem;
+  --font-size-large: 1.5rem;
+  --font-size-big: 2rem;
+
+  /* Spacing */
+  --spacing-tiny: 0.3125rem;
+  --spacing-smaller: 0.5rem;
+  --spacing-small: 1rem;
+  --spacing-medium: 1.5rem;
+  --spacing-large: 2rem;
+  --spacing-larger: 3rem;
+  --spacing-big: 4rem;
+
+  /* Z-indexes */
+  --z-index-low: 1;
+  --z-index-high: 2;
+  --z-index-overlay: 3;
+
+  /* Stave */
+  --stave-height: 20vw;
+}
+
+@media (min-width: 25rem) {
+  :root {
+    --font-size-smaller: 1rem;
+  }
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --stave-height: 6rem;
+  }
+}

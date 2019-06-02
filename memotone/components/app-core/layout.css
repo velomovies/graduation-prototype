@@ -3,7 +3,7 @@
 html {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: var(--font-size-small);
+  font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -18,7 +18,7 @@ a.underline {
 }
 
 main {
-  padding-bottom: 8rem;
-  max-width: 60rem;
+  padding-bottom: 6rem;
+  max-width: var(--app-width);
   margin: 0 auto;
 }

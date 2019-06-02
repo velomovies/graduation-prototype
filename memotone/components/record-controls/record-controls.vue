@@ -1,27 +1,29 @@
 <template>
-  <nav class="record-controls">
-    <button
-      @click="e => $emit('toggleAudio', e)"
-      class="record-controls__link small-text"
-      :class="{ 'record-controls__link--inactive' : !audioFile }"
-    >
-      <play-icon v-if="!isPlaying" class="record-controls__link-icon" />
-      <pause-icon v-if="isPlaying" class="record-controls__link-icon" />
-      Afspelen
-    </button>
-    <app-button
-      @toggleRecord="e => $emit('toggleRecord', e)"
-      :isListening="isListening"
-      isRecord
-    />
-    <nuxt-link
-      to="/music/eigen-opnames/opname-4"
-      class="record-controls__link small-text"
-      :class="{ 'record-controls__link--inactive' : !audioFile }"
-    >
-      <save-icon class="record-controls__link-icon" />
-      Opslaan
-    </nuxt-link>
+  <nav class="record-controls__container">
+    <div class="record-controls">
+      <button
+        @click="e => $emit('toggleAudio', e)"
+        class="record-controls__link"
+        v-if="audioFile"
+      >
+        <play-icon v-if="!isPlaying" class="record-controls__link-icon" />
+        <pause-icon v-if="isPlaying" class="record-controls__link-icon" />
+        <p class="a11y-sr-only">Afspelen</p>
+      </button>
+      <app-button
+        @toggleRecord="e => $emit('toggleRecord', e)"
+        :isListening="isListening"
+        isRecord
+      />
+      <nuxt-link
+        to="/music/muziekopname"
+        class="record-controls__link"
+        v-if="audioFile"
+      >
+        <save-icon class="record-controls__link-icon" />
+        <p class="a11y-sr-only">Opslaan</p>
+      </nuxt-link>
+    </div>
   </nav>
 </template>
 
@@ -56,22 +58,39 @@ export default {
 </script>
 
 <style>
-  .record-controls {
+  .record-controls__container {
     position: fixed;
-    bottom: 0;
+    bottom: 1rem;
     width: 100%;
-    background: var(--white);
+    height: 5.5rem;
+  }
+
+  .record-controls {
+    max-width: var(--app-width);
+    padding: 0 1rem;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 25rem) {
+    .record-controls {
+      padding: 0 2rem;
+    }
   }
 
   .record-controls__link {
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 1rem 0;
+    border-radius: 50%;
+    background: var(--gray);
+    padding: 1rem;
     color: var(--black);
+    box-shadow: var(--box-shadow);
   }
 
   .record-controls__link--inactive {
@@ -84,6 +103,8 @@ export default {
   }
 
   .record-controls__link-icon {
-    margin-bottom: .35rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 1;
   }
 </style>

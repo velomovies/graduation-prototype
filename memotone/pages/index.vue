@@ -3,9 +3,9 @@
   <app-header />
   <main>
     <page-title
-      uppercase
+      :title="'Jouw eigen muziek'"
     >
-      Welkom bij memotone
+      Je hebt nog niets opgenomen
     </page-title>
     <onboarding />
   </main>

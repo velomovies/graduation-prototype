@@ -10,7 +10,7 @@
         'record-pause-button__button--resume' : !isListening
       }"
     >
-      <pause class="record-pause-button__icon" v-if="isListening"/>
+      <pause-icon class="record-pause-button__icon" v-if="isListening"/>
       <p class="record-pause-button__text">Hervat</p>
       <p
         class="a11y-sr-only"
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import pause from '../../static/images/icons/pause.svg'
+import pauseIcon from '../../static/images/icons/pause.svg'
 
 export default {
   components: {
-    pause,
+    pauseIcon,
   },
   props: {
     isListening: {
@@ -44,15 +44,18 @@ export default {
     border: none;
     background: none;
     cursor: pointer;
-    top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateX(-50%);
   }
 
   .record-pause-button:hover,
   .record-pause-button:focus {
     background: none;
     outline: none;
+  }
+
+  .record-pause-button__button {
+    box-shadow: var(--box-shadow);
   }
 
   .record-pause-button__button--pause {
@@ -109,9 +112,9 @@ export default {
 
   .record-pause-button__button--resume {
     position: relative;
-    border: .1rem solid var(--record-color);
+    background: var(--record-color);
     height: 4.5rem;
-    width: 7rem;
+    width: 7.5rem;
     margin-top: .5rem;
     border-radius: 5rem;
     transition: all .3s;
@@ -120,12 +123,11 @@ export default {
   .record-pause-button__text {
     position: absolute;
     margin: 0 auto;
-    text-transform: uppercase;
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    color: var(--record-color);
-    font-size: var(--font-size-smaller);
+    color: var(--white);
+    font-size: var(--font-size-small);
     opacity: 0;
     transition: all .3s;
   }

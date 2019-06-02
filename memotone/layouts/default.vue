@@ -1,5 +1,5 @@
 <template>
-  <nuxt/>
+  <nuxt class="phone-grid"/>
 </template>
 
 <style>

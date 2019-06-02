@@ -2,13 +2,13 @@
 
 h1 {
   font-size: var(--font-size-large);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.25;
 }
 
 h2 {
-  font-weight: 500;
-  font-size: var(--font-size);
+  font-weight: 400;
+  font-size: var(--font-size-small);
   line-height: 1.1;
 }
 
@@ -19,12 +19,14 @@ h3 {
 }
 
 p {
-  font-size: var(--font-size);
+  font-size: var(--font-size-small);
+  line-height: 1.1;
 }
 
 .meta {
-  font-weight: 400;
-  color: var(--gray);
+  font-size: var(--font-size-smaller);
+  font-weight: 300;
+  color: var(--theme-color);
 }
 
 .small-text {

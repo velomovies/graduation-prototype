@@ -1,40 +1,45 @@
 <template>
-  <div class="musicProject">
+  <div
+    class="detail"
+  >
     <app-header
       isBack
-      :page="'/music'"
+      :page="`/music/`"
+    />
+    <app-share @toggleShare="(data) => this.showShare = data"/>
+    <main class="detail__main">
+      <settings-tab @toggleEdit="(data) => this.showSettings = data"/>
+      <music-bars />
+    </main>
+    <play-controls
+      @shareClicked="() => this.showShare = true"
+      @settingsClicked="() => this.showSettings = true"
     />
     <transition name="fade">
-      <app-share v-if="showShare" @close="() => this.showShare = false"/>
+      <div v-if="showSettings || showShare" class="settings__underlay"></div>
     </transition>
-    <main class="musicProject__main">
-      <page-title withImage>
-        {{ getSlug($route.params.slug) }}
-      </page-title>
-      <track-list />
-    </main>
-    <app-navigation />
   </div>
 </template>
 
 <script>
 import appHeader from '../../../components/app-header'
 import appShare from '../../../components/app-share'
-import appNavigation from '../../../components/app-navigation'
-import pageTitle from '../../../components/page-title'
-import trackList from '../../../components/track-list'
+import playControls from '../../../components/play-controls'
+import settingsTab from '../../../components/settings-tab'
+import musicBars from '../../../components/music-bars'
 
 export default {
   components: {
     appHeader,
     appShare,
-    appNavigation,
-    pageTitle,
-    trackList,
+    playControls,
+    settingsTab,
+    musicBars,
   },
   data () {
     return {
       showShare: false,
+      showSettings: false,
     }
   },
   methods: {
@@ -47,4 +52,17 @@ export default {
 </script>
 
 <style>
+  .detail {
+    min-height: 100vh;
+    background: var(--white);
+  }
+
+  .settings__underlay {
+    position: absolute;
+    background: #33333333;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+  }
 </style>
+

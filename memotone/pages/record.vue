@@ -1,12 +1,15 @@
 <template>
   <div class="record">
     <app-header
-      isBack
+      isClose
     />
     <app-error v-if="errorMessage"/>
     <main>
-      <page-title>
-        Opname 4
+      <page-title
+        class="record__page-title"
+        :title="'Muziekopname'"
+      >
+        Neem je eigen muziek op
       </page-title>
 
       <note-visualizer
@@ -23,7 +26,6 @@
       :isListening="isListening"
       :audioFile="audioFile"
       :isPlaying="isPlaying"
-      :isRecord="true"
     />
   </div>
 </template>
@@ -209,7 +211,12 @@ export default {
 
 <style>
 .record {
+  background: var(--white);
   height: 100%;
   min-height: 100vh;
+}
+
+.record__page-title {
+  margin-bottom: 0;
 }
 </style>

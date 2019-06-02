@@ -1,27 +1,15 @@
 <template>
   <nav class="navigation">
-    <nuxt-link class="navigation__link small-text" to="/">
-      <home-icon class="navigation__link-icon" />
-      Home
-    </nuxt-link>
     <app-button />
-    <nuxt-link class="navigation__link small-text" to="/music">
-      <music-icon class="navigation__link-icon" />
-      Muziek
-    </nuxt-link>
   </nav>
 </template>
 
 <script>
-import homeIcon from '../../static/images/icons/home.svg'
-import musicIcon from '../../static/images/icons/music.svg'
 import appButton from '../app-button'
 
 export default {
   components: {
     appButton,
-    homeIcon,
-    musicIcon,
   },
 }
 </script>
@@ -31,9 +19,6 @@ export default {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: var(--white);
-    display: flex;
-    justify-content: space-around;
   }
 
   .navigation__link {

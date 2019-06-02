@@ -1,0 +1,53 @@
+/* Typography */
+
+h1 {
+  font-size: var(--font-size-large);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: var(--font-size);
+  line-height: 1.1;
+}
+
+h3 {
+  font-weight: 900;
+  font-size: var(--font-size-small);
+  margin-bottom: .5rem;
+}
+
+p {
+  font-size: var(--font-size);
+}
+
+.meta {
+  font-weight: 400;
+  color: var(--gray);
+}
+
+.small-text {
+  font-size: var(--font-size-smaller);
+}
+
+a {
+  transition: all .3s;
+}
+
+a:hover,
+a:focus {
+  color: var(--record-color);
+}
+
+code, pre {
+  font-family: "Courier New", Courier, monospace;
+}
+
+strong {
+  font-weight: 900;
+}
+
+em {
+  font-style: italic;
+}

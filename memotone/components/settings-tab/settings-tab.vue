@@ -1,89 +1,97 @@
 <template>
-    <section class="settings-tab__article">
-      <button
-        class="settings-tab__back"
-        @click="e => this.$emit('close', e)"
-      >
-          <back-logo
-            class="settings-tab__back-icon"
-          />
-          Terug
-      </button>
-      <button @click="e => this.$emit('close', e)" class="settings-tab__article-link">
-        Opslaan
-      </button>
+    <section
+      class="settings-tab"
+      :class="{ 'settings-tab--open' : editOpen }"
+    >
+      <h1 class="settings-tab__text">Muziekopname</h1>
+      <p class="settings-tab__text meta">Instrument in C</p>
+      <p class="meta">Tempo: 90 bpm</p>
+      <div class="settings-tab__buttons">
+        <transition name="fade">
+          <button v-if="editOpen" @click="editToggle" class="settings-tab__button">
+            <close-icon class="settings-tab__button-icon" />
+            <p class="a11y-sr-only">Sluit</p>
+          </button>
+        </transition>
+
+        <button @click="editToggle" class="settings-tab__button">
+          <edit-icon v-if="!editOpen" class="settings-tab__button-icon" />
+          <save-icon v-if="editOpen" class="settings-tab__button-icon" />
+          <p class="a11y-sr-only">{{ buttonText }}</p>
+        </button>
+      </div>
     </section>
 </template>
 
 <script>
-import backLogo from '../../static/images/icons/arrow-left.svg'
+import closeIcon from '../../static/images/icons/x.svg'
+import editIcon from '../../static/images/icons/edit-3.svg'
+import saveIcon from '../../static/images/icons/save.svg'
 
 export default {
   components: {
-    backLogo,
+    closeIcon,
+    editIcon,
+    saveIcon,
+  },
+  data () {
+    return {
+      editOpen: false,
+    }
+  },
+  methods: {
+    editToggle () {
+      this.editOpen = !this.editOpen
+      this.$emit('toggleEdit', this.editOpen)
+      return this.editOpen
+    },
+  },
+  computed: {
+    buttonText: function () {
+      return this.editOpen ? 'Opslaan' : 'Aanpassingen'
+    },
   },
 }
 </script>
 
 <style>
-  .settings-tab__article {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .settings-tab {
+    position: relative;
+    margin: 2rem 2rem 4rem 2rem;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+    background: var(--background-color);
+    transition: all .3s;
+  }
+
+  .settings-tab--open {
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    z-index: var(--z-index-low);
+  }
+
+  .settings-tab__text {
+    margin-bottom: .5rem;
+  }
+
+  .settings-tab__buttons {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 90%;
-    padding: 2rem;
-    background: var(--white);
-    text-align: center;
-    z-index: var(--z-index-overlay);
+    right: -.5rem;
+    bottom: -.75rem;
   }
 
-  @media (min-width: 30rem) {
-    .settings-tab__article {
-      width: 70%;
-    }
+  .settings-tab__button {
+    background: var(--gray);
+    padding: .5rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
-  @media (min-width: 30rem) {
-    .settings-tab__article {
-      width: 50%;
-    }
-  }
-
-  .settings-tab__back {
-    text-align: left;
-    margin-bottom: 1rem;
-    font-size: var(--font-size-small);
-  }
-
-  .settings-tab__article-text-link {
-    color: var(--record-color);
-    text-decoration: underline;
-  }
-
-  .settings-tab__article-link {
-    color: var(--theme-color);
-    font-size: var(--font-size);
-  }
-
-  .settings-tab__back-icon {
-    transform: translate(.25rem, .175rem);
-    height: 1rem;
-    width: 1rem;
-    transition: transform .3s;
-  }
-
-  .settings-tab__back:hover,
-  .settings-tab__back:focus {
-    background: var(--white);
-    color: var(--record-color);
-  }
-
-  .settings-tab__back:hover .settings-tab__back-icon,
-  .settings-tab__back:focus .settings-tab__back-icon {
-    transform: translate(0, .175rem);
+  .settings-tab__button-icon {
+    stroke-width: 1;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 </style>

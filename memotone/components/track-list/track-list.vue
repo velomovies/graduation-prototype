@@ -1,64 +1,66 @@
 <template>
   <ul class="track-list">
     <li class="track-list__link">
-      <nuxt-link class="track-list__link-item" :to="`/music/${$route.params.slug}/opname-1`">
+      <nuxt-link class="track-list__link-item" :to="`/music/opname-1`">
+        <div class="track-list__text">
+          <div>
+            <h2
+              class="track-list__text-h2"
+            >
+              Op het strand
+            </h2>
+            <span class="meta">00:21</span>
+          </div>
+          <p class="track-list__text-p meta">
+           <span>Instrument in C</span>
+          </p>
+        </div>
+      </nuxt-link>
+    <li/>
+    <li class="track-list__link">
+      <nuxt-link class="track-list__link-item" :to="`/music/opname-1`">
         <div class="track-list__text">
           <h2
             class="track-list__text-h2"
           >
-            Opname 1
+            Refrein: Op het strand
+           <span class="meta">00:14</span>
           </h2>
-          <p class="track-list__text-p meta small-text">
-           <span>00:21</span>
+          <p class="track-list__text-p meta">
            <span>Zang</span>
           </p>
         </div>
       </nuxt-link>
-      <button class="track-list__link-options">
-        <div class="track-list__link-options-dot"></div>
-        <div class="track-list__link-options-dot"></div>
-        <div class="track-list__link-options-dot"></div>
-      </button>
     <li/>
     <li class="track-list__link">
-      <nuxt-link class="track-list__link-item" :to="`/music/${$route.params.slug}/opname-2`">
+      <nuxt-link class="track-list__link-item" :to="`/music/opname-1`">
         <div class="track-list__text">
           <h2
             class="track-list__text-h2"
           >
-            Opname 2
+            Backingtrack
+           <span class="meta">00:32</span>
           </h2>
-          <p class="track-list__text-p meta small-text">
-           <span>00:43</span>
-           <span>Zang</span>
-          </p>
-        </div>
-      </nuxt-link>
-      <button class="track-list__link-options">
-        <div class="track-list__link-options-dot"></div>
-        <div class="track-list__link-options-dot"></div>
-        <div class="track-list__link-options-dot"></div>
-      </button>
-    <li/>
-    <li class="track-list__link">
-      <nuxt-link class="track-list__link-item" :to="`/music/${$route.params.slug}/opname-3`">
-        <div class="track-list__text">
-          <h2
-            class="track-list__text-h2"
-          >
-            Opname 3
-          </h2>
-          <p class="track-list__text-p meta small-text">
-           <span>00:58</span>
+          <p class="track-list__text-p meta">
            <span>Instrument in Bes</span>
           </p>
         </div>
       </nuxt-link>
-      <button class="track-list__link-options">
-        <div class="track-list__link-options-dot"></div>
-        <div class="track-list__link-options-dot"></div>
-        <div class="track-list__link-options-dot"></div>
-      </button>
+    <li/>
+    <li class="track-list__link">
+      <nuxt-link class="track-list__link-item" :to="`/music/opname-1`">
+        <div class="track-list__text">
+          <h2
+            class="track-list__text-h2"
+          >
+            Experimenteel
+           <span class="meta">00:58</span>
+          </h2>
+          <p class="track-list__text-p meta">
+           <span>Zang</span>
+          </p>
+        </div>
+      </nuxt-link>
     <li/>
   </ul>
 </template>
@@ -72,43 +74,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .track-list__link-options {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 1.625rem;
-    width: 2rem;
-  }
-
-  .track-list__link-options-dot {
-    width: .25rem;
-    height: .25rem;
-    background: var(--black);
-    border-radius: 50%;
-  }
-
-  .track-list__link-options:hover .track-list__link-options-dot,
-  .track-list__link-options:focus .track-list__link-options-dot {
-    background: var(--record-color);
-  }
-
-  .track-list__link {
+    padding: 1rem;
     margin-bottom: 1.5rem;
-    border-left: .05rem solid var(--black);
-    padding-left: .5rem;
+    border-radius: .5rem;
+    background: var(--white);
   }
 
   .track-list__link-item {
     width: 100%;
     display: flex;
     align-items: center;
-  }
-
-  .track-list__text-p span {
-    margin-right: .5rem;
   }
 </style>
 

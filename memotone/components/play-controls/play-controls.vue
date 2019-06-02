@@ -1,35 +1,17 @@
 <template>
   <nav class="play-controls">
-    <button
-      @click="e => this.$emit('settingsClicked', e)"
-      class="play-controls__link small-text"
-    >
-      <settings-icon class="play-controls__link-icon" />
-      Instellingen
-    </button>
     <app-button
       isPlay
     />
-    <button
-      @click="e => this.$emit('shareClicked', e)"
-      class="play-controls__link small-text"
-    >
-      <share-icon class="play-controls__link-icon" />
-      Delen
-    </button>
   </nav>
 </template>
 
 <script>
-import settingsIcon from '../../static/images/icons/sliders.svg'
-import shareIcon from '../../static/images/icons/share.svg'
 import appButton from '../app-button'
 
 export default {
   components: {
     appButton,
-    settingsIcon,
-    shareIcon,
   },
 }
 </script>
@@ -39,7 +21,6 @@ export default {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: var(--white);
     display: flex;
     justify-content: space-around;
   }

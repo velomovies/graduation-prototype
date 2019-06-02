@@ -1,53 +1,51 @@
 <template>
   <section class="onboarding">
     <article class="onboarding__article">
-      <p>Neem jouw muziek op</p>
-      <p>[Plaatje]</p>
+      <mic-icon class="onboarding__article-icon" />
+      <p>Neem je zelf bedachte muziek op!</p>
     </article>
     <article class="onboarding__article">
-      <p>Bekijk en luister de muziek</p>
-      <p>[Plaatje]</p>
+      <headphone-icon class="onboarding__article-icon" />
+      <p>Bekijk en luister je muziek terug!</p>
     </article>
     <article class="onboarding__article">
-      <p>Deel het met anderen</p>
-      <p>[Plaatje]</p>
+      <share-icon class="onboarding__article-icon" />
+      <p>Deel de muziek met al je vrienden!</p>
     </article>
   </section>
 </template>
 
+<script>
+import micIcon from '../../static/images/icons/mic.svg'
+import headphoneIcon from '../../static/images/icons/headphones.svg'
+import shareIcon from '../../static/images/icons/share-2.svg'
+
+export default {
+  components: {
+    micIcon,
+    headphoneIcon,
+    shareIcon,
+  },
+}
+</script>
+
+
 <style>
   .onboarding {
-    display: flex;
-    overflow-x: auto;
-    width: 100%;
-    padding: 0 2rem;
+    margin: 0 2rem;
   }
 
   .onboarding__article {
-    background: var(--white);
-    height: 50vh;
-    min-height: 15rem;
-    width: 100%;
-    border-radius: 1rem;
-    min-width: 80vw;
-    margin-right: 1rem;
-    padding: 1.5rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
   }
 
-  @media (min-width: 30rem) {
-    .onboarding__article {
-      min-width: 60vw;
-    }
-  }
-
-  @media (min-width: 30rem) {
-    .onboarding__article {
-      min-width: 16rem;
-    }
-  }
-
-  .onboarding__article p {
-    margin-bottom: .5rem;
+  .onboarding__article-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    stroke-width: 1;
+    margin-right: 2rem;
   }
 </style>

@@ -16,6 +16,15 @@
   opacity: 0;
 }
 
+.fade-in-enter-active {
+  transition: opacity .3s;
+  transition-delay: .2s;
+}
+
+.fade-in-enter {
+  opacity: 0;
+}
+
 .slide-enter-active,
 .slide-leave-active {
   transform: translateX(0);

@@ -1,5 +1,6 @@
 /* Font faces */
 
+/* Nunito */
 @font-face {
   font-family: "nunito";
   font-weight: 200;
@@ -37,5 +38,78 @@
   font-style: italic;
   src: url("/fonts/nunito-italic.woff2") format("woff2"),
        url("/fonts/nunito-italic.woff") format("woff");
+  font-display: swap;
+}
+
+/* Work-Sans */
+@font-face {
+  font-family: "worksans";
+  font-weight: 100;
+  src: url("/fonts/worksans-thin.woff2") format("woff2"),
+       url("/fonts/worksans-thin.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 200;
+  src: url("/fonts/worksans-extralight.woff2") format("woff2"),
+       url("/fonts/worksans-extralight.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 300;
+  src: url("/fonts/worksans-light.woff2") format("woff2"),
+       url("/fonts/worksans-light.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 400;
+  src: url("/fonts/worksans-regular.woff2") format("woff2"),
+       url("/fonts/worksans-regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 500;
+  src: url("/fonts/worksans-medium.woff2") format("woff2"),
+       url("/fonts/worksans-medium.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 600;
+  src: url("/fonts/worksans-semibold.woff2") format("woff2"),
+       url("/fonts/worksans-semibold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 700;
+  src: url("/fonts/worksans-bold.woff2") format("woff2"),
+       url("/fonts/worksans-bold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 800;
+  src: url("/fonts/worksans-extrabold.woff2") format("woff2"),
+       url("/fonts/worksans-extrabold.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "worksans";
+  font-weight: 900;
+  src: url("/fonts/worksans-black.woff2") format("woff2"),
+       url("/fonts/worksans-black.woff") format("woff");
   font-display: swap;
 }

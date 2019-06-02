@@ -2,22 +2,25 @@
   /* Colors */
   --black: #333333;
   --white: #ffffff;
-  --gray: #9a9a9a;
-  --dark-grey: #777;
+  --gray: #f9f9f9;
+  --dark-grey: #9e9e9e;
   --html-blue: blue;
-  --theme-color: #9E2500;
-  --record-color: #C21001;
-  --record-color-half: #E6C8C0;
-  --background-color: #f7f7f7;
+  --theme-color: #617998;
+  --record-color: #eb5856;
+  --record-color-half: #f0938d;
+  --background-color: #efefef;
+  --accent-color: #96b52c;
+
+  --box-shadow: 0 3px 6px #33333333;
 
   /* Fonts */
-  --font-sans: 'nunito', Arial, sans-serif;
+  --font-sans: 'worksans', Arial, sans-serif;
   --font-bold: Arial, sans-serif;
 
-  --font-size-smaller: .8rem;
-  --font-size-small: 1.125rem;
-  --font-size: 1.25rem;
-  --font-size-large: 1.5rem;
+  --font-size-smaller: 1rem;
+  --font-size-small: 1.25rem;
+  --font-size: 1.5rem;
+  --font-size-large: 1.75rem;
   --font-size-big: 2rem;
 
   /* Spacing */
@@ -36,6 +39,9 @@
 
   /* Stave */
   --stave-height: 20vw;
+
+  /* App */
+  --app-width: 30rem;
 }
 
 @media (min-width: 25rem) {
