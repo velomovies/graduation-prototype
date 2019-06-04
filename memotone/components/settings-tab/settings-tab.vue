@@ -104,13 +104,13 @@ export default {
     editToggle () {
       this.editOpen = !this.editOpen
       this.$emit('toggleEdit', this.editOpen)
-      return this.editOpen
     },
     changeTitle (e) {
       this.musicTitleChanged = e.target.value
     },
     changeInstrument (e) {
       this.musicInstrumentChanged = e.target.value
+      this.$emit('changeNotes', this.musicInstrumentChanged)
     },
   },
   computed: {
@@ -136,7 +136,7 @@ export default {
 <style>
   .settings-tab {
     position: relative;
-    margin: 2rem 2rem 4rem 2rem;
+    margin: 2rem 2rem 0 2rem;
     border-radius: .5rem;
     padding: 1rem 2rem;
     background: var(--background-color);

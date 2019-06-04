@@ -10,9 +10,12 @@
     <main class="detail__main">
       <settings-tab
         @toggleEdit="(data) => this.showSettings = data"
+        @changeNotes="transposeNotes"
         :title="getSlug($route.params.slug)"
       />
-      <music-bars />
+      <music-bars
+        :transpose="transposeNumber"
+      />
     </main>
     <play-controls
       @shareClicked="() => this.showShare = true"
@@ -43,6 +46,7 @@ export default {
     return {
       showShare: false,
       showSettings: false,
+      transposeNumber: 0,
     }
   },
   methods: {
@@ -50,6 +54,23 @@ export default {
       string = string.replace(/-/g,' ')
       string = string.charAt(0).toUpperCase() + string.slice(1)
       return string
+    },
+    transposeNotes (data) {
+      if (data == 0 || data == -1 || data == 1) {
+        this.transposeNumber = 0
+      } else if (data == 2) {
+        this.transposeNumber = 5.5
+      } else if (data == 3) {
+        this.transposeNumber = 11
+      } else if (data == 4) {
+        this.transposeNumber = 0
+      } else if (data == 5) {
+        this.transposeNumber = -18
+      } else if (data == 6) {
+        this.transposeNumber = -11
+      } else if (data == 7) {
+        this.transposeNumber = -6.5
+      }
     },
   },
 }
