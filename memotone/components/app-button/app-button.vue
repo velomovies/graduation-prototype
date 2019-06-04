@@ -37,7 +37,7 @@
 
     <div v-if="isPlay" class="app-button">
       <button
-        @click="e => { this.isPlaying = !this.isPlaying }"
+        @click="scrollToStave"
         class="app-button__button-container app-button__button-container--play"
       >
         <div
@@ -92,6 +92,10 @@ export default {
     this.checkPermissions()
   },
   methods: {
+    scrollToStave (e) {
+      window.location.hash = "#music-bars"
+      this.isPlaying = !this.isPlaying
+    },
     checkPermissions () {
       if(navigator.permissions) {
         navigator.permissions.query({name: 'microphone'})
