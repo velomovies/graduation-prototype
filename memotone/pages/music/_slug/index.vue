@@ -17,9 +17,17 @@
         :transpose="transposeNumber"
       />
     </main>
+    <transition name="fade">
+      <speech-bubble
+        @clicked="() => this.showHelp = false"
+        v-if="showHelp"
+        isDark
+      >
+        Druk hier om je eigen muziek af te spelen!
+      </speech-bubble>
+    </transition>
     <play-controls
-      @shareClicked="() => this.showShare = true"
-      @settingsClicked="() => this.showSettings = true"
+      @toggleMusic="toggleMusic"
     />
     <transition name="fade">
       <div v-if="showSettings || showShare" class="settings__underlay"></div>
@@ -33,6 +41,7 @@ import appShare from '../../../components/app-share'
 import playControls from '../../../components/play-controls'
 import settingsTab from '../../../components/settings-tab'
 import musicBars from '../../../components/music-bars'
+import speechBubble from '../../../components/speech-bubble'
 
 export default {
   components: {
@@ -41,13 +50,21 @@ export default {
     playControls,
     settingsTab,
     musicBars,
+    speechBubble,
   },
   data () {
     return {
       showShare: false,
       showSettings: false,
       transposeNumber: 0,
+      showHelp: false,
+      showHelpTimeout: null,
     }
+  },
+  mounted () {
+    this.showHelpTimeout = setTimeout(() => {
+      this.showHelp = true
+    }, 2500)
   },
   methods: {
     getSlug(string) {
@@ -71,6 +88,10 @@ export default {
       } else if (data == 7) {
         this.transposeNumber = -6.5
       }
+    },
+    toggleMusic (data) {
+      clearTimeout(this.showHelpTimeout)
+      this.showHelp = false
     },
   },
 }

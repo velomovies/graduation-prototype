@@ -20,6 +20,15 @@
         @current-note="toggleAudio"
       />
     </main>
+    <transition name="fade">
+      <speech-bubble
+        @clicked="() => this.showHelp = false"
+        v-if="showHelp"
+        isDark
+      >
+        Druk hier om je huidige opname te hervatten!
+      </speech-bubble>
+    </transition>
     <record-controls
       @toggleAudio="() => toggleAudio({ noteTime: 0, nthNote: 0 })"
       @toggleRecord="toggleLiveInput"
@@ -36,6 +45,7 @@ import appError from '../components/app-error'
 import noteVisualizer from '../components/note-visualizer'
 import pageTitle from '../components/page-title'
 import recordControls from '../components/record-controls'
+import speechBubble from '../components/speech-bubble'
 
 import { autoCorrelate } from '../lib'
 
@@ -46,10 +56,13 @@ export default {
     noteVisualizer,
     recordControls,
     pageTitle,
+    speechBubble,
   },
   data() {
     return {
       errorMessage: false,
+      showHelp: false,
+      showHelpTimeout: null,
 
       audioContext: null,
       isListening: false,
@@ -96,6 +109,9 @@ export default {
       this.isListening = true
       this.listeningStream = stream
 
+      clearTimeout(this.showHelpTimeout)
+      this.showHelp = false
+
       this.processAudio(stream)
     },
     stopStream (stream) {
@@ -137,6 +153,7 @@ export default {
         }
       }
       this.isRecording = false
+      this.showHelpTimeout = setTimeout(this.showHelpBubble, 5000)
     },
     updatePitch () {
       this.analyser.getFloatTimeDomainData(this.audioBuffer)
@@ -190,8 +207,13 @@ export default {
         this.activeNote = data.nthNote
         this.playButton = 'Pause audio'
         this.player.currentTime = data.noteTime
+        clearTimeout(this.showHelpTimeout)
+        this.showHelp = false
         this.player.play()
       }
+    },
+    showHelpBubble () {
+      this.showHelp = true
     },
     checkPermissions () {
       if (navigator.permissions) {

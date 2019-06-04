@@ -95,6 +95,7 @@ export default {
     scrollToStave (e) {
       window.location.hash = "#music-bars"
       this.isPlaying = !this.isPlaying
+      this.$emit('toggleMusic', e)
     },
     checkPermissions () {
       if(navigator.permissions) {

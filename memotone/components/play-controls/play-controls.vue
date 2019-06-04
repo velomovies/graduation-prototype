@@ -2,6 +2,7 @@
   <nav class="play-controls">
     <app-button
       isPlay
+      @toggleMusic="(data) => this.$emit('toggleMusic', data)"
     />
   </nav>
 </template>
