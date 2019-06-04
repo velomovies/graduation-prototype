@@ -15,6 +15,7 @@
       />
       <music-bars
         :transpose="transposeNumber"
+        :play="musicPlaying"
       />
     </main>
     <transition name="fade">
@@ -59,6 +60,7 @@ export default {
       transposeNumber: 0,
       showHelp: false,
       showHelpTimeout: null,
+      musicPlaying: false,
     }
   },
   mounted () {
@@ -90,6 +92,7 @@ export default {
       }
     },
     toggleMusic (data) {
+      this.musicPlaying = data
       clearTimeout(this.showHelpTimeout)
       this.showHelp = false
     },

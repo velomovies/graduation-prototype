@@ -2,7 +2,7 @@
   <nav class="play-controls">
     <app-button
       isPlay
-      @toggleMusic="(data) => this.$emit('toggleMusic', data)"
+      @toggleMusic="toggleMusic"
     />
   </nav>
 </template>
@@ -13,6 +13,23 @@ import appButton from '../app-button'
 export default {
   components: {
     appButton,
+  },
+  data () {
+    return {
+      musicAudio: null,
+    }
+  },
+  methods: {
+    toggleMusic (data)  {
+      if (data) {
+        this.musicAudio = new Audio('/sound/whistling3.ogg')
+        this.musicAudio.play()
+      } else {
+        this.musicAudio.pause()
+        this.musicAudio.currentTime = 0
+      }
+      this.$emit('toggleMusic', data)
+    },
   },
 }
 </script>

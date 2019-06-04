@@ -34,7 +34,7 @@
       <path id="Path_35" data-name="Path 35" d="M225.448,720.472v2.388h-10.32v-2.373c2.093-.666,2.759-1.769,2.541-4.274h-9.2a8.5,8.5,0,0,1,.791-1.794c2.337-2.945,4.324-6.053,4.947-9.85.167-1.009.24-2.036.373-3.147h7.574a85.194,85.194,0,0,1-10.71,12.93h6.279a26.094,26.094,0,0,1,.032-2.993,3.05,3.05,0,0,1,.722-1.666c1.3-1.359,2.7-2.619,4.054-3.918l.3.1v8.847H225.4v1.417h-2.252C222.527,719.109,223.209,719.932,225.448,720.472Z" transform="translate(-208.465 -678.628)"/>
     </g>
     <g :transform="`translate(0 ${transpose})`">
-      <g id="Group_41" data-name="Group 41" transform="translate(194.149 208.159)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 6 }" id="Group_41" data-name="Group 41" transform="translate(194.149 208.159)">
         <g id="Group_40" data-name="Group 40" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(0.685)">
             <g id="note-quarter" transform="translate(0)">
@@ -44,7 +44,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_43" data-name="Group 43" transform="translate(28.188 294.843)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 9 }" id="Group_43" data-name="Group 43" transform="translate(28.188 294.843)">
         <g id="Group_42" data-name="Group 42" transform="translate(0 0)" clip-path="url(#clip-path-2)">
           <g id="Mask_Group_5" data-name="Mask Group 5" transform="translate(0 2.952)">
             <g id="note-half-point">
@@ -54,21 +54,21 @@
           </g>
         </g>
       </g>
-      <g id="Group_45" data-name="Group 45" transform="translate(241.054 207.288)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 8 }" id="Group_45" data-name="Group 45" transform="translate(241.054 207.288)">
         <g id="Group_44" data-name="Group 44" transform="translate(0 0)" clip-path="url(#clip-path-3)">
           <g id="Mask_Group_4" data-name="Mask Group 4" transform="translate(0.001 7.129)">
             <path id="note-full" d="M911.236,724.368c-1.024-2.686-4.529-3.845-7.823-2.587s-5.14,4.456-4.116,7.143,4.528,3.846,7.827,2.588S912.261,727.056,911.236,724.368Zm-4.574,5.95c-2.489.95-5.135.075-5.911-1.956s.614-4.445,3.1-5.391,5.135-.075,5.911,1.955-.613,4.443-3.1,5.394Z" transform="translate(-899.015 -721.273)" fill-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g id="Group_47" data-name="Group 47" transform="translate(232.051 297.132)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 14 }" id="Group_47" data-name="Group 47" transform="translate(232.051 297.132)">
         <g id="Group_46" data-name="Group 46" transform="translate(0 0)" clip-path="url(#clip-path-3)">
           <g id="Mask_Group_19" data-name="Mask Group 19" transform="translate(0.001 7.129)">
             <path id="note-full-2" d="M839.688,979.9c-1.024-2.687-4.529-3.845-7.823-2.587s-5.139,4.456-4.116,7.143,4.529,3.846,7.827,2.588S840.712,982.587,839.688,979.9Zm-4.575,5.95c-2.489.95-5.135.074-5.911-1.956s.614-4.445,3.105-5.391,5.135-.075,5.911,1.956-.613,4.443-3.1,5.394Z" transform="translate(-827.467 -976.804)" fill-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g id="Group_49" data-name="Group 49" transform="translate(180.418 190.62)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 5 }" id="Group_49" data-name="Group 49" transform="translate(180.418 190.62)">
         <g id="Group_48" data-name="Group 48" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_3" data-name="Mask Group 3" transform="translate(0.711 0)">
             <g id="note-sixteen-up" transform="translate(0 0)">
@@ -80,7 +80,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_51" data-name="Group 51" transform="translate(105.8 190.62)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 2 }" id="Group_51" data-name="Group 51" transform="translate(105.8 190.62)">
         <g id="Group_50" data-name="Group 50" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_3-2" data-name="Mask Group 3" transform="translate(0.711 0)">
             <g id="note-sixteen-up-2" data-name="note-sixteen-up" transform="translate(0 0)">
@@ -92,7 +92,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_53" data-name="Group 53" transform="translate(81.705 286.052)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 10 }" id="Group_53" data-name="Group 53" transform="translate(81.705 286.052)">
         <g id="Group_52" data-name="Group 52" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_6" data-name="Mask Group 6" transform="translate(0.684)">
             <g id="note-quarter-2" transform="translate(0)">
@@ -102,7 +102,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_57" data-name="Group 57" transform="translate(29.624 392.225)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 15 }" id="Group_57" data-name="Group 57" transform="translate(29.624 392.225)">
         <g id="Group_56" data-name="Group 56" transform="translate(0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_13" data-name="Mask Group 13" transform="translate(0.685 0)">
             <g id="note-quarter-up" transform="translate(0 0)">
@@ -112,7 +112,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_59" data-name="Group 59" transform="translate(131.131 384.069)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 19 }" id="Group_59" data-name="Group 59" transform="translate(131.131 384.069)">
         <g id="Group_58" data-name="Group 58" clip-path="url(#clip-path-10)">
           <g id="Mask_Group_17" data-name="Mask Group 17" transform="translate(0 3.333)">
             <g id="note-quarter-point" transform="translate(0)">
@@ -123,28 +123,28 @@
           </g>
         </g>
       </g>
-      <g id="Group_61" data-name="Group 61" transform="translate(49.18 473.25)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 24 }" id="Group_61" data-name="Group 61" transform="translate(49.18 473.25)">
         <g id="Group_60" data-name="Group 60" transform="translate(0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_12" data-name="Mask Group 12" transform="translate(1.825 0)">
             <path id="note-half-up" d="M200.071,1516.257V1541.5h2.477v-21.824a6.765,6.765,0,0,0,5.4.132c3.213-1.226,5.005-4.344,4-6.963s-4.413-3.75-7.626-2.522C201.531,1511.394,199.81,1513.894,200.071,1516.257Zm4.7-4.765c2.43-.931,5.007-.073,5.762,1.907s-.6,4.333-3.023,5.259-5.006.073-5.762-1.906.6-4.333,3.027-5.259Z" transform="translate(-200.045 -1509.83)" fill-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g id="Group_63" data-name="Group 63" transform="translate(128.813 202.816)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 3 }" id="Group_63" data-name="Group 63" transform="translate(128.813 202.816)">
         <g id="Group_62" data-name="Group 62" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_12-2" data-name="Mask Group 12" transform="translate(1.825 0)">
             <path id="note-half-up-2" data-name="note-half-up" d="M495.071,685.257V710.5h2.477V688.679a6.766,6.766,0,0,0,5.4.132c3.213-1.226,5.005-4.343,4-6.963s-4.413-3.75-7.626-2.522C496.531,680.394,494.81,682.894,495.071,685.257Zm4.7-4.765c2.43-.931,5.007-.073,5.762,1.907s-.6,4.333-3.023,5.259-5.006.073-5.762-1.905.6-4.333,3.027-5.259Z" transform="translate(-495.045 -678.83)" fill-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g id="Group_65" data-name="Group 65" transform="translate(95.743 482.059)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 25 }" id="Group_65" data-name="Group 65" transform="translate(95.743 482.059)">
         <g id="Group_64" data-name="Group 64" clip-path="url(#clip-path)">
           <g id="Mask_Group_11" data-name="Mask Group 11" transform="translate(1.825 0)">
             <path id="note-half" d="M382.556,1579.373v-25.251H380.08v21.825a6.766,6.766,0,0,0-5.4-.132c-3.212,1.226-5,4.343-4.006,6.962s4.414,3.75,7.63,2.523C381.1,1584.232,382.817,1581.731,382.556,1579.373Zm-4.7,4.761c-2.427.926-5.005.073-5.761-1.905s.6-4.334,3.027-5.26,5.005-.074,5.761,1.905-.6,4.332-3.027,5.259Z" transform="translate(-370.396 -1554.122)" fill-rule="evenodd"/>
           </g>
         </g>
       </g>
-      <g id="Group_67" data-name="Group 67" transform="translate(175.831 404.059)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 20 }" id="Group_67" data-name="Group 67" transform="translate(175.831 404.059)">
         <g id="Group_66" data-name="Group 66" clip-path="url(#clip-path)">
           <g id="Mask_Group_18" data-name="Mask Group 18" transform="translate(0.684)">
             <g id="note-quarter-3" transform="translate(0)">
@@ -154,7 +154,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_71" data-name="Group 71" transform="translate(49.18 392.225)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 16 }" id="Group_71" data-name="Group 71" transform="translate(49.18 392.225)">
         <g id="Group_70" data-name="Group 70" transform="translate(0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_14" data-name="Mask Group 14" transform="translate(0.711 0)">
             <g id="note-sixteen-up-2-2" data-name="note-sixteen-up-2" transform="translate(0 0)">
@@ -166,7 +166,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_73" data-name="Group 73" transform="translate(68.737 396.881)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 17 }" id="Group_73" data-name="Group 73" transform="translate(68.737 396.881)">
         <g id="Group_72" data-name="Group 72" transform="translate(0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_15" data-name="Mask Group 15" transform="translate(0.711 0)">
             <g id="note-sixteen-up-3" transform="translate(0 0)">
@@ -178,7 +178,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_75" data-name="Group 75" transform="translate(91.087 374.415)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 18 }" id="Group_75" data-name="Group 75" transform="translate(91.087 374.415)">
         <g id="Group_74" data-name="Group 74" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_16" data-name="Mask Group 16" transform="translate(0.711 0)">
             <g id="note-sixteen-up-4" transform="translate(0 0)">
@@ -190,7 +190,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_77" data-name="Group 77" transform="translate(161.87 302.814)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 12 }" id="Group_77" data-name="Group 77" transform="translate(161.87 302.814)">
         <g id="Group_76" data-name="Group 76" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_9" data-name="Mask Group 9" transform="translate(0.684)">
             <g id="note-quarter-4" transform="translate(0)">
@@ -200,7 +200,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_79" data-name="Group 79" transform="translate(184.221 299.724)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 13 }" id="Group_79" data-name="Group 79" transform="translate(184.221 299.724)">
         <g id="Group_78" data-name="Group 78" clip-path="url(#clip-path-20)">
           <g id="Mask_Group_10" data-name="Mask Group 10" transform="translate(1.434 3.576)">
             <g id="note-quarter-point-2">
@@ -211,7 +211,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_81" data-name="Group 81" transform="translate(211.15 192.941)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 7 }" id="Group_81" data-name="Group 81" transform="translate(211.15 192.941)">
         <g id="Group_80" data-name="Group 80" clip-path="url(#clip-path-21)">
           <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(0 3.043)">
             <g id="note-sixteen">
@@ -223,7 +223,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_83" data-name="Group 83" transform="translate(270.819 386.048)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 23 }" id="Group_83" data-name="Group 83" transform="translate(270.819 386.048)">
         <g id="Group_82" data-name="Group 82" transform="translate(0 0)" clip-path="url(#clip-path-21)">
           <g id="Mask_Group_21" data-name="Mask Group 21" transform="translate(0 3.043)">
             <g id="note-sixteen-2" transform="translate(0)">
@@ -235,7 +235,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_85" data-name="Group 85" transform="translate(250.331 374.873)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 22 }" id="Group_85" data-name="Group 85" transform="translate(250.331 374.873)">
         <g id="Group_84" data-name="Group 84" transform="translate(0 0)" clip-path="url(#clip-path-21)">
           <g id="Mask_Group_22" data-name="Mask Group 22" transform="translate(0 3.043)">
             <g id="note-sixteen-3" transform="translate(0)">
@@ -247,7 +247,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_87" data-name="Group 87" transform="translate(160.168 213.746)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 4 }" id="Group_87" data-name="Group 87" transform="translate(160.168 213.746)">
         <g id="Group_86" data-name="Group 86" transform="translate(0 0)" clip-path="url(#clip-path)">
           <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(0.684)">
             <g id="note-quarter-5" transform="translate(0)">
@@ -257,7 +257,7 @@
           </g>
         </g>
       </g>
-      <g id="Group_90" data-name="Group 90" transform="translate(83.363 213.746)">
+      <g :class="{ 'music-bars__note--active' : activeNote == 1 }" id="Group_90" data-name="Group 90" transform="translate(83.363 213.746)">
         <g id="Group_89" data-name="Group 89" transform="translate(0 0)" clip-path="url(#clip-path-25)">
           <g id="Mask_Group_1-2" data-name="Mask Group 1" transform="translate(0.684)">
             <g id="Group_88" data-name="Group 88" transform="translate(0)">
@@ -270,7 +270,7 @@
         </g>
       </g>
     </g>
-    <g id="Group_69" data-name="Group 69" transform="translate(217.737 376.287)">
+    <g :class="{ 'music-bars__note--active' : activeNote == 21 }" id="Group_69" data-name="Group 69" transform="translate(217.737 376.287)">
       <g id="Group_68" data-name="Group 68" clip-path="url(#clip-path-15)">
         <g id="Mask_Group_20" data-name="Mask Group 20" transform="translate(0 15.274)">
           <g id="rest-half-point">
@@ -280,7 +280,7 @@
         </g>
       </g>
     </g>
-    <g id="Group_55" data-name="Group 55" transform="translate(120.974 291.639)">
+    <g :class="{ 'music-bars__note--active' : activeNote == 11 }" id="Group_55" data-name="Group 55" transform="translate(120.974 291.639)">
       <g id="Group_54" data-name="Group 54" clip-path="url(#clip-path)">
         <g id="Mask_Group_8" data-name="Mask Group 8" transform="translate(0 13.334)">
           <rect id="rest-full" width="15.836" height="5.005"/>
@@ -332,12 +332,42 @@
 import musicBarsSvg from '../../static/images/music-bars.svg'
 
 export default {
- props: {
-   transpose: {
-     type: Number,
-     default: 0,
-   },
- },
+  props: {
+    transpose: {
+      type: Number,
+      default: 0,
+    },
+    play: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  data () {
+    return {
+      activeNote: 0,
+    }
+  },
+  watch: {
+    play () {
+      console.log(this.play)
+      if (this.play) {
+        this.activeNote = 1
+      }
+      this.playNotes()
+    },
+  },
+  methods: {
+    playNotes () {
+      if (this.activeNote <= 25 && this.play) {
+        setTimeout(() => {
+          this.activeNote = this.activeNote + 1
+          this.playNotes()
+        }, 300)
+      } else {
+        this.activeNote = 0
+      }
+    },
+  },
 }
 </script>
 
@@ -349,6 +379,10 @@ export default {
   .music-bars__svg {
     width: 100%;
     height: 100%;
+  }
+
+  .music-bars__note--active {
+    fill: var(--record-color);
   }
 </style>
 

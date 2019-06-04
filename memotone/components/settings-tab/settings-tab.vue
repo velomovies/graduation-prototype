@@ -98,6 +98,8 @@ export default {
   methods: {
     editClose () {
       this.musicTitleChanged = this.title
+      this.musicInstrumentChanged = this.$route.query.selected
+      this.$emit('changeNotes', this.musicInstrumentChanged)
       this.editOpen = false
       this.$emit('toggleEdit', this.editOpen)
     },
@@ -168,6 +170,7 @@ export default {
 
   .settings-tab__text-h1--open {
     border-bottom: .1rem solid var(--black);
+    margin-bottom: 1.5rem;
   }
 
   .settings-tab__text-instrument {
@@ -177,6 +180,10 @@ export default {
 
   .settings-tab__text-instrument--small {
     width: 3.5rem;
+  }
+
+  .settings-tab__text-instrument--open {
+    margin-bottom: 1rem;
   }
 
   .settings-tab__text-instrument--open::after {
@@ -205,6 +212,7 @@ export default {
   }
 
   .settings-tab__text-tempo-input {
+    margin-right: -1.25rem;
     background: transparent;
     font-family: var(--font-sans);
     font-size: var(--font-size-smaller);
@@ -212,10 +220,13 @@ export default {
     text-align: center;
     border: .05rem solid transparent;
     border-radius: .25rem;
+    transition: all .3s;
   }
 
   .settings-tab__text-tempo-input--open {
     border: .05rem solid var(--theme-color);
+    padding-left: .5rem;
+    margin-right: 0;
   }
 
   .settings-tab__buttons {
