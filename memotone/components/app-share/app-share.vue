@@ -104,7 +104,7 @@ export default {
 
 <style>
   .app-share {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: var(--z-index-overlay);
