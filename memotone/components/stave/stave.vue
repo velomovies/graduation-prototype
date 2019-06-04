@@ -1,5 +1,5 @@
 <template>
-  <div class="stave__notes">
+  <div class="stave__notes" ref="stave">
     <div class="stave__time-signature"></div>
     <template
       v-for="(note, index) in notes"
@@ -11,6 +11,7 @@
         :noteIndex="index"
         :active="isPlaying && playingNote === index"
         @current-note="data => $emit('current-note', data)"
+        @noteActive="data => $emit('noteActive', data)"
       />
     </template>
   </div>
@@ -49,6 +50,9 @@ export default {
         this.setPlayingNote()
       }
     },
+    notes: function () {
+      this.$emit('addedNote', this.$refs['stave'].offsetWidth)
+    },
   },
   methods: {
     setPlayingNote () {
@@ -75,6 +79,7 @@ export default {
     background-repeat: repeat-x;
     background-size: auto 100%;
     min-height: var(--stave-height);
+    padding-right: 5rem;
   }
 
   .stave__time-signature {

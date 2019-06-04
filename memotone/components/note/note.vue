@@ -51,6 +51,13 @@ export default {
       ],
     }
   },
+  watch: {
+    active: function () {
+      if (this.active) {
+        this.$emit('noteActive', this.$el.offsetLeft - 200)
+      }
+    },
+  },
   methods: {
     showNote (index) {
       let noteTime = 0

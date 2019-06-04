@@ -1,11 +1,13 @@
 <template>
-  <section class="note-visualizer">
+  <section class="note-visualizer" ref="note-visualizer">
     <div class="note-visualizer__treble-staff"></div>
     <stave
       :notes="notes"
       :isPlaying="isPlaying"
       :activeNote="activeNote"
       @current-note="data => $emit('current-note', data)"
+      @addedNote="scrollStave"
+      @noteActive="scrollStave"
     />
   </section>
 </template>
@@ -62,12 +64,7 @@ export default {
           this.startTime = date.getTime()
 
           if (this.stopTime) {
-            this.notes.push({
-              hz: 0,
-              timeStart: this.stopTime,
-              timeStop: this.startTime,
-              noteDuration: this.startTime - this.stopTime,
-            })
+            this.addNotes({ isRest: true })
             this.duration = this.duration + (this.startTime - this.stopTime)
           }
 
@@ -77,19 +74,40 @@ export default {
         if (this.startTime && !this.firstLoopPlaying) {
           const date = new Date()
           this.stopTime = date.getTime()
-          this.notes.push({
-            hz: getMedian(this.playedHz),
-            noteObj: musicalHelpers.getNoteObject(getMedian(this.playedHz)),
-            timeStart: this.startTime,
-            timeStop: this.stopTime,
-            noteDuration: this.stopTime - this.startTime,
-          })
+          this.addNotes({ isRest: false })
           this.duration = this.duration + (this.stopTime - this.startTime)
           this.firstLoopPlaying = true
         }
 
         this.playedHz= []
       }
+    },
+  },
+  methods: {
+    addNotes (options) {
+      if (options.isRest) {
+        this.notes.push({
+          hz: 0,
+          timeStart: this.stopTime,
+          timeStop: this.startTime,
+          noteDuration: this.startTime - this.stopTime,
+        })
+      } else {
+        this.notes.push({
+          hz: getMedian(this.playedHz),
+          noteObj: musicalHelpers.getNoteObject(getMedian(this.playedHz)),
+          timeStart: this.startTime,
+          timeStop: this.stopTime,
+          noteDuration: this.stopTime - this.startTime,
+        })
+      }
+    },
+    scrollStave (data) {
+      this.$refs['note-visualizer'].scrollTo({
+        top: 0,
+        left: data,
+        behavior: 'smooth',
+      })
     },
   },
 }
