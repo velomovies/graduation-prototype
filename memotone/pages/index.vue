@@ -1,6 +1,6 @@
 <template>
 <div class="index">
-  <app-header />
+  <app-header :page="'/music'" />
   <main>
     <page-title
       :title="'Jouw eigen muziek'"

@@ -13,7 +13,7 @@
         Terug
       </nuxt-link>
 
-      <nuxt-link class="header__logo" :to="'/'">
+      <nuxt-link class="header__logo" :to="page">
         <main-logo class="header__logo-icon"/>
         <p v-if="!isClose && !isBack" class="header__logo-text">memo<span>tone</span></p>
         <p class="a11y-sr-only">Home</p>
