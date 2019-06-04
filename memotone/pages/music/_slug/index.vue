@@ -8,7 +8,10 @@
     />
     <app-share @toggleShare="(data) => this.showShare = data"/>
     <main class="detail__main">
-      <settings-tab @toggleEdit="(data) => this.showSettings = data"/>
+      <settings-tab
+        @toggleEdit="(data) => this.showSettings = data"
+        :title="getSlug($route.params.slug)"
+      />
       <music-bars />
     </main>
     <play-controls
@@ -45,6 +48,7 @@ export default {
   methods: {
     getSlug(string) {
       string = string.replace(/-/g,' ')
+      string = string.charAt(0).toUpperCase() + string.slice(1)
       return string
     },
   },
@@ -58,7 +62,7 @@ export default {
   }
 
   .settings__underlay {
-    position: absolute;
+    position: fixed;
     background: #33333333;
     width: 100vw;
     height: 100vh;
