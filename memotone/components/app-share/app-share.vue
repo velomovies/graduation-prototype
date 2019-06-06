@@ -53,7 +53,7 @@
               </li>
               <li>
                 <a
-                  href="/opname-1.pdf"
+                  href="/fijne-verjaardag.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="app-share__article-link"
