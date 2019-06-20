@@ -212,7 +212,7 @@ export default {
   }
 
   .settings-tab__text-tempo-input {
-    margin-right: -1.25rem;
+    margin-right: -.5rem;
     background: transparent;
     font-family: var(--font-sans);
     font-size: var(--font-size-smaller);
@@ -225,7 +225,6 @@ export default {
 
   .settings-tab__text-tempo-input--open {
     border: .05rem solid var(--theme-color);
-    padding-left: .5rem;
     margin-right: 0;
   }
 
