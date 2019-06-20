@@ -23,10 +23,10 @@
     "serve": "serve ./dist"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "dotenv": "^6.1.0",
     "dotenv-safe": "^6.0.0",
-    "nuxt": "^2.4.0",
+    "nuxt": "^2.8.1",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

@@ -23,7 +23,7 @@
     "serve": "serve ./dist"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "dotenv": "^6.1.0",
     "dotenv-safe": "^6.0.0",
     "get-float-time-domain-data": "^0.1.0",
