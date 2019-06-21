@@ -25,6 +25,8 @@
               <li>
                 <a
                   href="https://wa.me/?text=Bekijk%20mijn%20eigen%20muziek%20op%20https://www.memotone.nl/music/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="app-share__article-link"
                 >
                   <whatsapp-icon class="app-share__article-icon"/>
